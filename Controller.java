@@ -79,13 +79,16 @@ public class Controller extends HttpServlet {
 			
 			if(status)
 			{
-				request.getRequestDispatcher("NewFile1.jsp").forward(request, response);
+				request.setAttribute("title", title);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
 			}
 			
 			else
-			{
+			{	
 				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
-				request.getRequestDispatcher("NewFile1.jsp").forward(request, response);
+				
+				request.setAttribute("title", title);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
 			}
 		}
 		
@@ -111,13 +114,16 @@ public class Controller extends HttpServlet {
 			
 			if(status)
 			{
-				request.getRequestDispatcher("NewFile1.jsp").forward(request, response);
+				request.setAttribute("title", title);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
 			}
 			
 			else
 			{
 				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
-				request.getRequestDispatcher("NewFile1.jsp").forward(request, response);
+				
+				request.setAttribute("title", title);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
 			}		
 		}		
 
@@ -178,10 +184,36 @@ public class Controller extends HttpServlet {
 			String subject = request.getParameter("subject");
 			String email = request.getParameter("email");
 			
-			request.setAttribute("subject", subject);
-			request.setAttribute("email", email);
-			request.getRequestDispatcher("PostArticle.jsp").forward(request, response);
+			boolean status = false;
+			DB db = new DB();
+			
+			try
+			{
+				status = db.checkblockauthor(email);	
+			}
+			
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			if(status)
+			{
+				JOptionPane.showMessageDialog(null, "Sorry you have been blcoked, please contact Admin", "Info", JOptionPane.INFORMATION_MESSAGE);
+				
+				request.setAttribute("subject", subject);
+				request.getRequestDispatcher("NewFile.jsp").forward(request, response);
+			}
+			
+			else
+			{
+				request.setAttribute("subject", subject);
+				request.setAttribute("email", email);
+				request.getRequestDispatcher("PostArticle.jsp").forward(request, response);
+			}	
+
 		}
+		
 		
 		if(page.equals("view-article"))
 		{
@@ -189,6 +221,14 @@ public class Controller extends HttpServlet {
 			
 			request.setAttribute("title", title);
 			request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+		}
+		
+		if(page.equals("admin-view-article"))
+		{
+			String title = request.getParameter("title");
+			
+			request.setAttribute("title", title);
+			request.getRequestDispatcher("AdminViewArticle.jsp").forward(request, response);
 		}
 
 		if(page.equals("comment-post"))
