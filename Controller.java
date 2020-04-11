@@ -125,7 +125,91 @@ public class Controller extends HttpServlet {
 				request.setAttribute("title", title);
 				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
 			}		
-		}		
+		}
+		
+		
+		if(page.equals("comments_like"))
+		{
+			String title = request.getParameter("title");
+			String ip = request.getRemoteAddr();
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+//			System.out.println(id);
+//			System.out.println(title);
+			
+			int a = 1;
+			
+			DB db = new DB();
+			boolean status = false;
+			
+			try
+			{
+				status = db.check_comments_popular(ip, id, a);	
+			}
+			
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			if(status)
+			{
+				request.setAttribute("title", title);
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+			}
+			
+			else
+			{	
+				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
+				
+				request.setAttribute("title", title);
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+			}
+		}
+		
+		if(page.equals("comments_dislike"))
+		{
+			String title = request.getParameter("title");
+			String ip = request.getRemoteAddr();
+			int id = Integer.parseInt(request.getParameter("id"));
+
+//			System.out.println(id);
+//			System.out.println(title);
+			
+			int a = 0;
+			
+			DB db = new DB();
+			boolean status = false;
+			
+			try
+			{
+				status = db.check_comments_popular(ip, id, a);	
+			}
+			
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			if(status)
+			{
+				request.setAttribute("title", title);
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+			}
+			
+			else
+			{
+				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
+				
+				request.setAttribute("title", title);
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+			}		
+
+		}
 
 		
 		if(page.equals("home"))

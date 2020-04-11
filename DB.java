@@ -294,6 +294,85 @@ public class DB {
 		
 		return result;
 	}
+	
+	public boolean check_comments_popular(String ip, int id, int a) throws SQLException
+	{
+		connect();
+		
+		boolean result = false;
+		int i = 0;
+
+		
+
+		String sql = "insert into comments_ip(ip, id, prefer) values(?, ?, ?)";
+		String sql2 = "select * from comments_ip where ip=? and id=?";
+		String sql3 = "update comments_ip set prefer=? where ip=? and id=?";
+		
+		PreparedStatement ps2 = con.prepareStatement(sql2);
+		ps2.setString(1, ip);
+		ps2.setInt(2, id);
+		
+		ResultSet rs = ps2.executeQuery();
+		
+		while(rs.next())
+		{
+			i = 1;
+		}
+		
+		if(i==1)
+		{
+			PreparedStatement ps3 = con.prepareStatement(sql3);
+			ps3.setInt(1, a);	
+			ps3.setString(2, ip);
+			ps3.setInt(3, id);
+			ps3.executeUpdate();
+			result = true;
+		}
+		
+		else if(i==0)
+		{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, ip);
+			ps.setInt(2, id);
+			ps.setInt(3, a);
+			ps.executeUpdate();
+			result = true;
+		}
+
+		
+/*
+		
+		String sql = "insert into user_ip(ip, title, prefer) values(?, ?, ?)";
+		String sql2 = "select * from user_ip where ip=? and title=?";
+		
+		PreparedStatement ps2 = con.prepareStatement(sql2);
+		ps2.setString(1, ip);
+		ps2.setString(2, title);
+		
+		ResultSet rs = ps2.executeQuery();
+		
+		while(rs.next())
+		{
+			i = 1;
+			result = false;
+		}
+		
+		if(i==0)
+		{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, ip);
+			ps.setString(2, title);
+			ps.setInt(3, a);
+			ps.executeUpdate();
+			result = true;
+		}
+	
+*/
+		
+		close();
+		
+		return result;
+	}	
+
 
 }
-
