@@ -85,7 +85,7 @@ public class Controller extends HttpServlet {
 			
 			else
 			{	
-				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You have already liked the article.", "Info", JOptionPane.INFORMATION_MESSAGE);
 				
 				request.setAttribute("title", title);
 				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
@@ -120,7 +120,7 @@ public class Controller extends HttpServlet {
 			
 			else
 			{
-				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You have already disliked the article", "Info", JOptionPane.INFORMATION_MESSAGE);
 				
 				request.setAttribute("title", title);
 				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
@@ -133,9 +133,6 @@ public class Controller extends HttpServlet {
 			String title = request.getParameter("title");
 			String ip = request.getRemoteAddr();
 			int id = Integer.parseInt(request.getParameter("id"));
-			
-//			System.out.println(id);
-//			System.out.println(title);
 			
 			int a = 1;
 			
@@ -161,7 +158,7 @@ public class Controller extends HttpServlet {
 			
 			else
 			{	
-				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You have already liked the comment.", "Info", JOptionPane.INFORMATION_MESSAGE);
 				
 				request.setAttribute("title", title);
 				request.setAttribute("id", id);
@@ -174,9 +171,6 @@ public class Controller extends HttpServlet {
 			String title = request.getParameter("title");
 			String ip = request.getRemoteAddr();
 			int id = Integer.parseInt(request.getParameter("id"));
-
-//			System.out.println(id);
-//			System.out.println(title);
 			
 			int a = 0;
 			
@@ -202,7 +196,7 @@ public class Controller extends HttpServlet {
 			
 			else
 			{
-				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You have already disliked the comment", "Info", JOptionPane.INFORMATION_MESSAGE);
 				
 				request.setAttribute("title", title);
 				request.setAttribute("id", id);

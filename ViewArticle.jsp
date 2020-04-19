@@ -344,7 +344,9 @@ select * from comments where title="${ title}"
 </sql:query>
 
 <%---------------------------------------------------------------------- --%>
-
+<%-- This block is the comment box, where the comment, user, and time are 
+	 going to be displayed. 
+ --%>
 
 <c:forEach items="${ result2.rows}" var="row">
 <div class="div3">
@@ -356,6 +358,7 @@ select * from comments where title="${ title}"
 <td>
 
 <!-- ............................................................... -->
+<!-- This block create like button and functionality to each comment-->
 
 <sql:query var="result5" dataSource="${ db}">
 select * from comments_ip where prefer=1 and id="${ row.id}";
@@ -376,6 +379,7 @@ select * from comments_ip where prefer=1 and id="${ row.id}";
 </form>
 
 <!-- ............................................................... -->
+<!-- This block create dislike button and functionality to each comment-->
 
 <sql:query var="result6" dataSource="${ db}">
 select * from comments_ip where prefer=0 and id="${ row.id}";
