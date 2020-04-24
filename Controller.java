@@ -85,7 +85,7 @@ public class Controller extends HttpServlet {
 			
 			else
 			{	
-				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You have already liked the article.", "Info", JOptionPane.INFORMATION_MESSAGE);
 				
 				request.setAttribute("title", title);
 				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
@@ -120,12 +120,90 @@ public class Controller extends HttpServlet {
 			
 			else
 			{
-				JOptionPane.showMessageDialog(null, "You have already like", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You have already disliked the article", "Info", JOptionPane.INFORMATION_MESSAGE);
 				
 				request.setAttribute("title", title);
 				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
 			}		
-		}		
+		}
+		
+		
+		if(page.equals("comments_like"))
+		{
+			String title = request.getParameter("title");
+			String ip = request.getRemoteAddr();
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			int a = 1;
+			
+			DB db = new DB();
+			boolean status = false;
+			
+			try
+			{
+				status = db.check_comments_popular(ip, id, a);	
+			}
+			
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			if(status)
+			{
+				request.setAttribute("title", title);
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+			}
+			
+			else
+			{	
+				JOptionPane.showMessageDialog(null, "You have already liked the comment.", "Info", JOptionPane.INFORMATION_MESSAGE);
+				
+				request.setAttribute("title", title);
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+			}
+		}
+		
+		if(page.equals("comments_dislike"))
+		{
+			String title = request.getParameter("title");
+			String ip = request.getRemoteAddr();
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			int a = 0;
+			
+			DB db = new DB();
+			boolean status = false;
+			
+			try
+			{
+				status = db.check_comments_popular(ip, id, a);	
+			}
+			
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			if(status)
+			{
+				request.setAttribute("title", title);
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+			}
+			
+			else
+			{
+				JOptionPane.showMessageDialog(null, "You have already disliked the comment", "Info", JOptionPane.INFORMATION_MESSAGE);
+				
+				request.setAttribute("title", title);
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
+			}		
+
+		}
 
 		
 		if(page.equals("home"))

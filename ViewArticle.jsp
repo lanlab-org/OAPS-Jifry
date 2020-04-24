@@ -21,7 +21,7 @@ body
 
 header
 {
-	background-color:black;
+	background-color:dodgerblue;
 	text-align:center;
 	height:70px;
 	margin-bottom:50px;
@@ -218,7 +218,7 @@ header input
 
 footer
 {
-	background:black;
+	background:dodgerblue;
 	height:40px;
 	color:white;
 	text-align:center;
@@ -236,7 +236,7 @@ footer
 <a href="Controller?page=home">Home</a>
 <a href="Controller?page=aboutus">About us</a>
 <a href="Controller?page=contact">Contact</a>
-<a href="Controller?page=admin">Admin</a>
+<a href="Controller?page=admin">Author</a>
 
 <form action="/OOAD/Controller" method="post">
 <input type="hidden" name="page" value="select">
@@ -343,14 +343,72 @@ select * from user_ip where prefer=0 and title="${ title}";
 select * from comments where title="${ title}"
 </sql:query>
 
+<%---------------------------------------------------------------------- --%>
+<%-- This block is the comment box, where the comment, user, and time are 
+	 going to be displayed. 
+ --%>
+
 <c:forEach items="${ result2.rows}" var="row">
 <div class="div3">
 <table>
 <tr><td><a> <c:out value="${ row.user}"></c:out> </a> </td></tr>
 <tr><td> <c:out value="${ row.comment}"></c:out> </td></tr>
 <tr><td><p class="time"> <c:out value="${ row.time}"></c:out> </p> </td></tr>
+<tr>
+<td>
+
+<!-- ............................................................... -->
+<!-- This block create like button and functionality to each comment-->
+
+<sql:query var="result5" dataSource="${ db}">
+select * from comments_ip where prefer=1 and id="${ row.id}";
+</sql:query>
+
+<c:set var="q" value="0"></c:set>
+<c:forEach items="${ result5.rows}" var="row1">
+
+<c:set var="q" value="${ q+1}"></c:set>
+</c:forEach>
+
+<form action="/OOAD/Controller" method="post" class="popularity">
+<input type="hidden" name="page" value="comments_like">
+<input type="hidden" name="id" value="${ row.id}">
+<input type="hidden" name="title" value="${ title}">
+<button class="like"><i class="fa fa-thumbs-o-up"></i></button>
+<c:out value="${ q}"></c:out>
+</form>
+
+<!-- ............................................................... -->
+<!-- This block create dislike button and functionality to each comment-->
+
+<sql:query var="result6" dataSource="${ db}">
+select * from comments_ip where prefer=0 and id="${ row.id}";
+</sql:query>
+
+<c:set var="r" value="0"></c:set>
+<c:forEach items="${ result6.rows}" var="row2">
+
+<c:set var="r" value="${ r+1}"></c:set>
+</c:forEach>
+
+
+<form action="/OOAD/Controller" method="post"  class="popularity">
+<input type="hidden" name="page" value="comments_dislike">
+<input type="hidden" name="id" value="${ row.id}">
+<input type="hidden" name="title" value="${ title}">
+<button class="dislike"><i class="fa fa-thumbs-o-down"></i></button>
+<c:out value="${ r}"></c:out>
+</form>
+
+<!-- ............................................................... -->
+
+</td>
+</tr>
 </table>
 </div>
+
+<br><br>
+
 </c:forEach>
 
 <footer>
