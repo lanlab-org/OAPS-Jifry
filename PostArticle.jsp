@@ -17,7 +17,7 @@ body
 
 header
 {
-	background-color:dodgerblue;
+	background-color:black;
 	text-align:center;
 	height:70px;
 	margin-bottom:50px;
@@ -90,7 +90,7 @@ table
 
 footer
 {
-	background:dodgerblue;
+	background:black;
 	height:40px;
 	color:white;
 	text-align:center;
@@ -106,7 +106,26 @@ footer
 <body>
 
 <header>
-<%@include file="header.jsp" %>
+<nav>
+<a href="Controller?page=home">Home</a>
+<a href="Controller?page=aboutus">About us</a>
+<a href="Controller?page=contact">Contact</a>
+<a href="Controller?page=admin">Admin</a>
+
+<form action="/OOAD/Controller" method="post">
+<input type="hidden" name="page" value="select">
+<select name="option">
+<option value="Articles">Articles</option>
+</select>
+<button>go</button>
+</form>
+
+<form action="/OOAD/Controller" method="post">
+<input type="hidden" name="page" value="search">
+<input type="text" name="search2" required>
+<button>search</button>
+</form>
+</nav>
 </header>
 
 <form class="form1" action="/OOAD/UploadServlet" method="post" enctype="multipart/form-data">
@@ -117,7 +136,7 @@ footer
 </tr>
 
 <tr>
-<td><input type="text" name="author" value="<c:out value="${ author}"></c:out>" readonly style="background:lightgray"></td>
+<td><input type="text" name="author" value="<c:out value="${ email}"></c:out>" readonly style="background:lightgray"></td>
 </tr>
 
 <tr>
@@ -133,7 +152,7 @@ footer
 </tr>
 
 <tr>
-<td><input type="text" name="title" value="<c:out value="${ title}"></c:out>" placeholder="Enter title" required></td>
+<td><input type="text" name="title" placeholder="Enter title" required></td>
 </tr>
 
 <tr>
@@ -141,7 +160,7 @@ footer
 </tr>
 
 <tr>
-<td><input type="text" name="highlights" value="<c:out value="${ highlights}"></c:out>" placeholder="Enter highlights" required></td>
+<td><input type="text" name="highlights" placeholder="Enter highlights" required></td>
 </tr>
 
 <tr>
@@ -149,7 +168,7 @@ footer
 </tr>
 
 <tr>
-<td><input type="text" name="abstracts" value="<c:out value="${ abstracts}"></c:out>" placeholder="Enter abstract" required></td>
+<td><input type="text" name="abstracts" placeholder="Enter abstract" required></td>
 </tr>
 
 <tr>
@@ -165,7 +184,7 @@ footer
 </form>
 
 <footer>
-<%@include file="footer.jsp" %>
+2019 copyright&copy;mjh.mohamed
 </footer>
 
 </body>
