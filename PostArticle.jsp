@@ -136,7 +136,7 @@ footer
 </tr>
 
 <tr>
-<td><input type="text" name="author" value="<c:out value="${ email}"></c:out>" readonly style="background:lightgray"></td>
+<td><input type="text" name="author" value="<c:out value="${ author}"></c:out>" readonly style="background:lightgray"></td>
 </tr>
 
 <tr>
