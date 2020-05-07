@@ -31,7 +31,7 @@ import com.database.DB;
  * Servlet implementation class UploadServlet
  */
 @WebServlet("/UploadServlet")
-@MultipartConfig(fileSizeThreshold = 1024 *1021 * 10,
+@MultipartConfig(fileSizeThreshold = 1024 *1024 * 10,
 				maxFileSize = 1024 * 1024 * 1000,
 				maxRequestSize = 1024 * 1024 *1000)
 public class UploadServlet extends HttpServlet {
@@ -82,7 +82,7 @@ public class UploadServlet extends HttpServlet {
 		
 		if(checkstatus)
 		{
-			JOptionPane.showMessageDialog(null, "Article Title is already exist please try anotherone ", "Info", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "The article title already exists.\nPlease use another one. ", "Info", JOptionPane.INFORMATION_MESSAGE);
 			
 			request.setAttribute("author", author);
 			request.setAttribute("subject", subject);
@@ -97,7 +97,7 @@ public class UploadServlet extends HttpServlet {
 
 // ---------------------------------------------------------------------------------------------------------------
 		
-		response.setContentType("text/plai;charset=UTF=8");
+		response.setContentType("text/plain;charset=UTF=8");
 		
 		try 
 		{
@@ -193,7 +193,7 @@ public class UploadServlet extends HttpServlet {
 				
 			}else {// if the uploaded file type is not PDF, show an alert message
 				
-				JOptionPane.showMessageDialog(null, "Unsupported article type!.\nOnly PDF files are supported. ", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Unsupported file format!.\nOnly PDF files are supported. ", "Info", JOptionPane.INFORMATION_MESSAGE);
 				
 				request.setAttribute("author", author);
 				request.setAttribute("subject", subject);
