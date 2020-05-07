@@ -21,12 +21,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import javax.swing.JOptionPane;
+
+import org.apache.catalina.core.ApplicationPart;
+
+import com.database.DB;
 
 /**
  * Servlet implementation class UploadServlet
  */
 @WebServlet("/UploadServlet")
-@MultipartConfig(fileSizeThreshold = 1024 *1021 * 10,
+@MultipartConfig(fileSizeThreshold = 1024 *1024 * 10,
 				maxFileSize = 1024 * 1024 * 1000,
 				maxRequestSize = 1024 * 1024 *1000)
 public class UploadServlet extends HttpServlet {
@@ -55,7 +60,44 @@ public class UploadServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setContentType("text/plai;charset=UTF=8");
+		String author = request.getParameter("author");
+		String subject = request.getParameter("subject");
+		String title = request.getParameter("title");
+		String highlights = request.getParameter("highlights");
+		String abstracts = request.getParameter("abstracts");
+		
+		
+		DB db = new DB();
+		boolean checkstatus = false;
+		
+		try
+		{
+			checkstatus = db.checktitle(title);	
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		if(checkstatus)
+		{
+			JOptionPane.showMessageDialog(null, "The article title already exists.\nPlease use another one. ", "Info", JOptionPane.INFORMATION_MESSAGE);
+			
+			request.setAttribute("author", author);
+			request.setAttribute("subject", subject);
+			request.setAttribute("title", title);
+			request.setAttribute("highlights", highlights);
+			request.setAttribute("abstracts", abstracts);
+			request.getRequestDispatcher("PostArticle.jsp").forward(request, response);
+		}
+		
+		else
+		{	
+
+// ---------------------------------------------------------------------------------------------------------------
+		
+		response.setContentType("text/plain;charset=UTF=8");
 		
 		try 
 		{
@@ -72,86 +114,96 @@ public class UploadServlet extends HttpServlet {
 				dir.mkdir();
 			}
 			
-			String author = request.getParameter("author");
-			String subject = request.getParameter("subject");
-			String title = request.getParameter("title");
-			String highlights = request.getParameter("highlights");
-			String abstracts = request.getParameter("abstracts");
 			Timestamp time = new Timestamp(System.currentTimeMillis());
 			
 			
 			Part filePart = request.getPart("file");
 			String fileName = filePart.getSubmittedFileName();
 			String path = folderName + File.separator + fileName;
+			String fileType = filePart.getContentType();// get the uploaded file type
 			
-//			System.out.println("fileNmae:" +fileName);
-//			System.out.println("Path: "+ uploadPath);
-			
-			InputStream is = filePart.getInputStream();
-			Files.copy(is, Paths.get(uploadPath + File.separator + fileName), StandardCopyOption.REPLACE_EXISTING);
-			
-			try
-			{
-				Class.forName("com.mysql.jdbc.Driver");
+			// if the uploaded file type is PDF, then upload the file to the server
+			if(fileType == "application/pdf") {
 				
-				String u = "root";
-				String password = "Fathihachellam.1";
-				String ul = "jdbc:mysql://localhost:3306/ooad?autoReconnect=true&&useSSL=false";
+				InputStream is = filePart.getInputStream();
+				Files.copy(is, Paths.get(uploadPath + File.separator + fileName), StandardCopyOption.REPLACE_EXISTING);
 				
-				con = DriverManager.getConnection(ul, u, password);
-				
-				String sql = "insert into article(subject, title, highlight, abstracts, author, time, filename, path) values (?,?,?,?,?,?,?,?)";
-				
-				ps = con.prepareStatement(sql);
-				
-				ps.setString(1, subject);
-				ps.setString(2, title);
-				ps.setString(3, highlights);
-				ps.setString(4, abstracts);
-				ps.setString(5, author);
-				ps.setTimestamp(6, time);
-				ps.setString(7, fileName);
-				ps.setString(8, path);
-				
-				int status = ps.executeUpdate();
-				
-				if(status>0)
-				{
-					session.setAttribute("fileName", fileName);
-					String msg = "" +fileName+ " upload successfully";
-					request.setAttribute("msg", msg);
-					request.setAttribute("subject", subject);
-					request.getRequestDispatcher("NewFile.jsp").forward(request, response);
-//					System.out.println("uploadpath: "+uploadPath);
-				}
-				
-			}
-			
-			catch(SQLException | ClassNotFoundException e)
-			{
-				System.out.println(e);
-			}
-			
-			finally
-			{
 				try
 				{
-					if(ps != null)
+					Class.forName("com.mysql.jdbc.Driver");
+					
+					String u = "root";
+					String password = "124536";
+					String ul = "jdbc:mysql://localhost:3306/ooad?autoReconnect=true&&useSSL=false";
+					
+					con = DriverManager.getConnection(ul, u, password);
+					
+					String sql = "insert into article(subject, title, highlight, abstracts, author, time, filename, path) values (?,?,?,?,?,?,?,?)";
+					
+					ps = con.prepareStatement(sql);
+					
+					ps.setString(1, subject);
+					ps.setString(2, title);
+					ps.setString(3, highlights);
+					ps.setString(4, abstracts);
+					ps.setString(5, author);
+					ps.setTimestamp(6, time);
+					ps.setString(7, fileName);
+					ps.setString(8, path);
+					
+					int status = ps.executeUpdate();
+					
+					if(status>0)
 					{
-						ps.close();
+						session.setAttribute("fileName", fileName);
+						String msg = "" +fileName+ " upload successfully";
+						request.setAttribute("msg", msg);
+						request.setAttribute("subject", subject);
+						request.getRequestDispatcher("NewFile.jsp").forward(request, response);
+
+					}
+							
+			}
+				
+				catch(SQLException | ClassNotFoundException e)
+				{
+					System.out.println(e);
+				}
+				
+				finally
+				{
+					try
+					{
+						if(ps != null)
+						{
+							ps.close();
+						}
+						
+						if(con!=null)
+						{
+							con.close();
+						}
 					}
 					
-					if(con!=null)
+					catch(SQLException e)
 					{
-						con.close();
+						out.println(e);
 					}
 				}
 				
-				catch(SQLException e)
-				{
-					out.println(e);
-				}
+			}else {// if the uploaded file type is not PDF, show an alert message
+				
+				JOptionPane.showMessageDialog(null, "Unsupported file format!.\nOnly PDF files are supported. ", "Info", JOptionPane.INFORMATION_MESSAGE);
+				
+				request.setAttribute("author", author);
+				request.setAttribute("subject", subject);
+				request.setAttribute("title", title);
+				request.setAttribute("highlights", highlights);
+				request.setAttribute("abstracts", abstracts);
+				request.getRequestDispatcher("PostArticle.jsp").forward(request, response);
+				
 			}
+			
 					
 		}
 		
@@ -160,5 +212,7 @@ public class UploadServlet extends HttpServlet {
 			out.println(e);
 		}
 	}
+	
+	}  
 
 }
