@@ -5,7 +5,7 @@
 
 # How to contribute
 
-Currently, this project is maintained by team **MIJC** (Mahdi,IBRAHIM,Jifry, and Clive) and everyone else is welcomed to join us and help us to improve the project by any means.
+Currently, this project is maintained by team **MIJC** (Mahdi,IBRAHIM,Jifry, and Clive) and everyone else is welcome to join us and help us to improve the project by any means.
 
 ## Add Your Information to the Contributor List
 
@@ -33,12 +33,12 @@ If you would like to join us on KanBoard, contact (lanhui at zjnu.edu.cn) to cre
 ## Which Area in the Project to Contribute to
 
 If you wish to contribute to the source code see section **"Project Environment"**.
-However, if you wish to contribute to the project's documentation, homepage, etc, of the non-source-code-related areas. You can skip **"Project Environment"** section.
+However, if you wish to contribute to non-source-code-related areas, e.g., documentation, homepage, you can skip that section.
 
 ## Project Environment
 
-This project was developed using JSP and a number of other libraries and components. In order to run the project on your machine; you'll need to setup the appropriate environment.
-The following is a list of the current running environment:
+This project was developed using JSP and a number of other libraries and components. In order to run the project on your machine, you'll need to setup the appropriate environment.
+A list of tools or libraries you need to install:
 * [Eclipse Jee 2019-09 IDE](https://www.eclipse.org/downloads/packages/release/2019-09/r)
 * [Apache Tomcat v7.0](https://tomcat.apache.org/download-70.cgi)
 * [JDK-13](https://www.oracle.com/java/technologies/javase-jdk13-downloads.html)
@@ -48,13 +48,13 @@ The following is a list of the current running environment:
 * [commons-io-2.4](https://commons.apache.org/proper/commons-io/download_io.cgi)
 
 **NOTE**: This is the current running system environment, there might be newer versions of any component, and you might use newer versions if you like.
-Also we would like to assume that you know how to setup the aforementioned components. If not, you can look it up on the internet.
+Also we would like to assume that you know how to setup the aforementioned components.
 
-After you have finished setting up the environment, and everything is up and running, see the following section to understand our contribution policy.
+After you have finished setting up the environment, and everything is up and running, see the following section to understand our contribution workflow.
 ## Follow the Feature-branching Workflow
 
-In this collaborative project development, we are trying to protect the central repository from unreasonable changes that may break the whole system, or may cause inconsistency in the repository. Hence, we follow the feature-branching workflow (please, see this section *[The feature-branching workflow](https://github.com/spm2020spring/TeamCollaborationTutorial/blob/master/team.rst)* for a tutorial on how to get started with this technique).
-Simply, any change you may would like to do must be done on a separate branch, so that the change you made is being reviewed by a number of contributors to spot any problems or point some bugs in the change it self before it gets approved.
+In this collaborative project development, we are trying to protect the central repository from unreasonable changes that may break the whole system, or may cause inconsistency in the repository. Hence, we follow the feature-branching workflow (please, see this section *[The feature-branching workflow](https://github.com/spm2020spring/TeamCollaborationTutorial/blob/master/team.rst)* for a tutorial on how to get started).
+Simply, any change you may would like to do must be done on a separate branch, so that the change you made is reviewed by a number of contributors to spot any problems or pinpoint some bugs in the change itself before it gets approved.
 After the change you made is approved, the change then will be merged to the central repository.
 **Each branch should be dedicated to a single change.**
 ## Report a Bug
