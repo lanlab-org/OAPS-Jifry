@@ -48,7 +48,7 @@ A list of tools or libraries you need to install:
 * [commons-io-2.4](https://commons.apache.org/proper/commons-io/download_io.cgi)
 
 **NOTE**: This is the current running system environment, there might be newer versions of any component, and you might use newer versions if you like.
-Also we would like to assume that you know how to setup the aforementioned components.
+Also we would like to assume that you know how to setup the aforementioned components. If not, [follow these guidelines](https://github.com/lanlab-org/OAPS-Jifry/blob/master/Documents/UserDoc.md) before you continue.
 
 After you have finished setting up the environment, and everything is up and running, see the following section to understand our contribution workflow.
 ## Follow the Feature-branching Workflow
