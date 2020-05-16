@@ -29,7 +29,7 @@ commit the changes,
     $git push origin master
 ## Development Plan with KanBan
 For more information about the project's maintenance progress and to get a visual representation of the whole plan, see  [the project board on Kanboard](http://118.25.96.118/kanboard/?controller=BoardViewController&action=readonly&token=80ecf8f431a8dfafbc437dbc621b98d1c37c02790fd89f9cedc49a4c8d36).
-If you would like to join us on KanBoard, contact (lanhui at zjnu.edu.cn) to create an account for you, then contact (1525200991 at qq.com) to invite you to our project borad.
+If you would like to join us on KanBoard, contact (lanhui at zjnu.edu.cn) to create an account for you, then contact (1525200991 at qq.com) to invite you to our project board.
 ## Which Area in the Project to Contribute to
 
 If you wish to contribute to the source code see section **"Project Environment"**.
