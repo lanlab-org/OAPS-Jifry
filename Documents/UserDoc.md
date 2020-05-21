@@ -56,13 +56,13 @@ Step 1:**  Open  **C Drive > Program Files**  folder and look for  **Java** fold
 
 Step 2:  **Inside the Java folder you will find a jdk-XX** folder, open it and open the  **bin** folder,  **copy the path of bin folder**.
 
-Note:- Now you have to set the environment variable.
+Note:- you have to add the above path to the environment variable PATH.
 
 Step 3:  For that Go to **Control Panel > System and Security > System > Advanced System Setting > Environment Variables**
 
 Step 4:Under **System variable**, you will find “**PATH**” just select it and click on **edit.** Now click on **New** and **add the bin folder location**, after that click on “**OK**“.
 
-For the JSTL it is the same process
+For the JSTL it is the same process.
 
 ### mysql-connector-java
 
@@ -70,7 +70,7 @@ In eclipse, open **Window -> Show View -> Data Source Explorer**
 Right click on the above database option and select “New” for creating the new connection from the database
 Select the MySQL version to be configured
 If you don’t have the JAR files added, please add it manually by clicking on the “Add Jar/Zip” button.
-click on the button “Test Connection”, it will test the connection with database.
+Click on the button “Test Connection”, it will test the connection with database.
 
 ## How to use the website
 ### Post an article
@@ -86,7 +86,7 @@ Note:- The file format must be PDF only.
 
 Then, click "**Post**".
 
-You article now is successfully posted, and you can also see the article's description by clicking on the article's name from the subject list:
+You article now is successfully posted, and you can also see the article's description by clicking on the article's title from the subject list:
 ![screenshot4](Documents/screenshots/s4.png)
 
 ### Edit or delete your own articles
@@ -117,10 +117,10 @@ Of course, by clicking "**Delete**", the article will be deleted from the websit
 In this frequently asked questions section, we attempt to answer some of the special questions that you may want to ask after reading this document.
 ### What is OAPS-Jifry ?
 **OAPS-Jifry** is a re-implementation of the **OAPS**(Open Access Publishing System)  **[TreeLib](https://github.com/youmowang/zjnuservice)**, using JSP technology. The original TreeLib was implemented using Python programming language.
-### Do i need to sign-up ?
+### Do i need to sign-up to post and article ?
 Absolutely NO.
 OAPS-Jifry, just like OAPS-TreeLib is open access system, that is, you don't need to sign-up, nor login in order to post/view articles. However, in OAPS-Jifry you can register as an author by the same email you used to post an article so you can edit, or delete your articles. This is one of the features that has been newly added to this version.
 ### Why two implementations of the same system ?
-OAPS-TreeLib originated as a **OOAD** (Object Oriented Analysis and Design) fall 2018 course project, developed by Yun Dabang, Ni Zhongjie. Then, in fall 2019, the course project of OOAD was to maintain the same project of the previous year. Due to programming language barrier — the project was written by Python and most of 2019 students didn't learn or study Python. Jifry decided to re-implement the system from scratch using what he knows best **JSP**.
-### I have a question who to ask ?
+OAPS-TreeLib originated as a course project for [Introduction to Object-Oriented Analysis and Design (fall 2018)](http://lanlab.org/course/2018f/oo/project_description.pdf), developed by [Yun Dabang, Ni Zhongjie](http://118.25.96.118/gsrycloud/TreeLib/). Then, in fall 2019, the course project of OOAD was to maintain the same project of the previous year. Due to programming language barrier — the project was written by Python and most of 2019 students didn't learn or study Python. Jifry decided to re-implement the system from scratch using what he knows best **JSP**.
+### Who should I ask if I have a questions ?
 If you have a question, you can email your question to (1525200991 at qq.com).
