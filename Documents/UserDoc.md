@@ -75,41 +75,41 @@ Click on the button “Test Connection”, it will test the connection with data
 ## How to use the website
 ### Post an article
 On the website's homepage, you'll see several subjects, you can click on one of the subjects, e.g., *Physical Science*:
-![screenshot1](Documents/screenshots/s1.png)
+![screenshot1](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s1.png)
 
 Type your **email address**, and click "**Post Article**":
-![screenshot2](Documents/screenshots/s2.png)
+![screenshot2](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s2.png)
 
 Fill in the following required fields:
-![screenshot3](Documents/screenshots/s3.png)
+![screenshot3](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s3.png)
 Note:- The file format must be PDF only.
 
 Then, click "**Post**".
 
-You article now is successfully posted, and you can also see the article's description by clicking on the article's title from the subject list:
-![screenshot4](Documents/screenshots/s4.png)
+Your article now is successfully posted, and you can also see the article's description by clicking on the article's title from the subject list:
+![screenshot4](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s4.png)
 
 ### Edit or delete your own articles
 From the navigation bar above, click on "**Author**":
-![screenshot5](Documents/screenshots/s5.png)
+![screenshot5](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s5.png)
 
 You can login if you are already registered as an author on the website, if not, click on "**register**":
-![screenshot6](Documents/screenshots/s6.png)
+![screenshot6](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s6.png)
 Note:- You should register with the same email you have used when published your articles.
 
-![screenshot7](Documents/screenshots/s7.png)
+![screenshot7](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s7.png)
 Click "**register**", then login.
 
 After you login, you'll see a list of articles you have published using this email you logged in with. For each article you can perform either, "**Edit**", or "**Delete**":
-![screenshot8](Documents/screenshots/s8.png)
+![screenshot8](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s8.png)
 
 Click on "**Edit**":
-![screenshot9](Documents/screenshots/s9.png)
+![screenshot9](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s9.png)
 Now you can edit the article's description.
 When you finish, click "**Update**":
 
 Finally, the highlight is updated:
-![screenshot10](Documents/screenshots/s10.png)
+![screenshot10](https://raw.githubusercontent.com/lanlab-org/OAPS-Jifry/master/Documents/screenshots/s10.png)
 
 Of course, by clicking "**Delete**", the article will be deleted from the website.
 
