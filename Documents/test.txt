@@ -1,0 +1,240 @@
+@T001
+
+Test title: test case for requirement 1
+
+Test for: RQ01
+
+Description: Testing search by article's title.
+
+Rationale: Confirm that a user can search by title.
+
+Input: Learn Python Two
+
+Expected output: Article titled Learn Python Two
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+
+@T002
+
+Test title: test case for requirement 2
+
+Test for: RQ02
+
+Description: Testing search by article's highlights.
+
+Rationale: Confirm that a user can search by highlights.
+
+Input: online food ordering system
+
+Expected output: Article titled Learn Python Two
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+@T003
+
+Test title: test case for requirement 3
+
+Test for: RQ03
+
+Description: Testing search by article's abstract.
+
+Rationale: Confirm that a user can search by abstract.
+
+Input: This lab is a follow-up to Lab 2
+
+Expected output: Article titled Learn Python Two
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+@T004
+
+Test title: test case for requirement 4
+
+Test for: RQ04
+
+Description: Testing search by article's author.
+
+Rationale: Confirm that a user can search by author.
+
+Input: mohamedsukri11@hotmail.com
+
+Expected output: Article titled Learn Python Two
+
+Actual output: None.
+
+Diagnosis: The system can't find results by article's author name.
+
+Status: F
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+@T005
+
+Test title: test case for requirement 5
+
+Test for: RQ05
+
+Description: Testing whether a user can like a comment.
+
+Rationale: Confirm that a user can like comments.
+
+Input: Click Like button.
+
+Expected output: Like count increases.
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+@T005a
+
+Test title: test case for requirement 5
+
+Test for: RQ05
+
+Description: Testing whether a user can dislike a comment.
+
+Rationale: Confirm that a user can dislike a comment.
+
+Input: Click dislike button
+
+Expected output: Dislike counter increases.
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+@T006
+
+Test title: test case for requirement 6
+
+Test for: RQ06
+
+Description: Testing comment like spam prevention.
+
+Rationale: A user may spam a like button for a comment.
+
+Input: Click like button repeatedly.
+
+Expected output: Alert message notifying the user to not spam.
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+@T006a
+
+Test title: test case for requirement 6
+
+Test for: RQ06
+
+Description: Testing comment dislike spam prevention.
+
+Rationale: A user may spam a dislike button for a comment.
+
+Input: Click dislike button repeatedly.
+
+Expected output: Alert message notifying the user to not spam.
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+@T007
+
+Test title: test case for requirement 7
+
+Test for: RQ07
+
+Description: Testing uploading files of PDF format.
+
+Rationale: Users are allowed to upload PDF files only.
+
+Input: Upload PDF file.
+
+Expected output: File is uploaded successfuly.
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+@T008
+
+Test title: test case for requirement 8
+
+Test for: RQ08
+
+Description: Testing uploading files of non PDF format.
+
+Rationale: Users are not allowed to upload non PDF files.
+
+Input: Upload DOC file.
+
+Expected output: Alert message
+
+Actual output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24

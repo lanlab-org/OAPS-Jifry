@@ -1,0 +1,31 @@
+@RQ01
+
+User should be able to search for an article by its title.
+
+@RQ02
+
+User should be able to search for an article by its highlights.
+
+@RQ03
+
+User should be able to search for an article by its abstract.
+
+@RQ04
+
+User should be able to search for an article by its author.
+
+@RQ05
+
+Users should be able to like/dislike each comment once only.
+
+@RQ06
+
+If a user spams like/dislike, the system should alert the user to not spam.
+
+@RQ07
+
+The allowed uploaded file format should be PDF with extension .pdf only.
+
+@RQ08
+
+If the uploaded file format is not .pdf, the system should alert the user.  

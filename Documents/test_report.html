@@ -1,0 +1,787 @@
+
+    <html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+    <meta charset="utf-8">
+    <style>
+      * {font-family: sans-serif !important;}
+
+      :target {
+	  background-color: #ffa;
+      }
+    </style>
+    </head>
+    <body>
+    <h2 id="matrix">Requirement Traceability Matrix</h2>
+<table border=1>
+<tr><td>REQUIREMENT\TEST</td><td><a href="#T001" title="T001">T001</a></td><td><a href="#T002" title="T002">T002</a></td><td><a href="#T003" title="T003">T003</a></td><td><a href="#T004" title="T004">T004</a></td><td><a href="#T005" title="T005">T005</a></td><td><a href="#T005a" title="T005a">T005a</a></td><td><a href="#T006" title="T006">T006</a></td><td><a href="#T006a" title="T006a">T006a</a></td><td><a href="#T007" title="T007">T007</a></td><td><a href="#T008" title="T008">T008</a></td></tr>
+<tr><td><a href="#RQ01" title="User should be able to search for an article by its title.">RQ01</a></td>
+<td><a title="Test Title: test case for requirement 1
+
+Test For: RQ01
+
+Description: Testing search by article[QUOTE]s title.
+
+Rationale: Confirm that a user can search by title.
+
+Input: Learn Python Two
+
+Expected Output: Article titled Learn Python Two
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td><a href="#RQ02" title="User should be able to search for an article by its highlights.">RQ02</a></td>
+<td></td>
+<td><a title="Test Title: test case for requirement 2
+
+Test For: RQ02
+
+Description: Testing search by article[QUOTE]s highlights.
+
+Rationale: Confirm that a user can search by highlights.
+
+Input: online food ordering system
+
+Expected Output: Article titled Learn Python Two
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td><a href="#RQ03" title="User should be able to search for an article by its abstract.">RQ03</a></td>
+<td></td>
+<td></td>
+<td><a title="Test Title: test case for requirement 3
+
+Test For: RQ03
+
+Description: Testing search by article[QUOTE]s abstract.
+
+Rationale: Confirm that a user can search by abstract.
+
+Input: This lab is a follow-up to Lab 2
+
+Expected Output: Article titled Learn Python Two
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td><a href="#RQ04" title="User should be able to search for an article by its author.">RQ04</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a title="Test Title: test case for requirement 4
+
+Test For: RQ04
+
+Description: Testing search by article[QUOTE]s author.
+
+Rationale: Confirm that a user can search by author.
+
+Input: mohamedsukri11@hotmail.com
+
+Expected Output: Article titled Learn Python Two
+
+Actual Output: None.
+
+Diagnosis: The system can[QUOTE]t find results by article[QUOTE]s author name.
+
+Status: F
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="red">FAILED</font></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td><a href="#RQ05" title="Users should be able to like/dislike each comment once only.">RQ05</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a title="Test Title: test case for requirement 5
+
+Test For: RQ05
+
+Description: Testing whether a user can like a comment.
+
+Rationale: Confirm that a user can like comments.
+
+Input: Click Like button.
+
+Expected Output: Like count increases.
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+<td><a title="Test Title: test case for requirement 5
+
+Test For: RQ05
+
+Description: Testing whether a user can dislike a comment.
+
+Rationale: Confirm that a user can dislike a comment.
+
+Input: Click dislike button
+
+Expected Output: Dislike counter increases.
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td><a href="#RQ06" title="If a user spams like/dislike, the system should alert the user to not spam.">RQ06</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a title="Test Title: test case for requirement 6
+
+Test For: RQ06
+
+Description: Testing comment like spam prevention.
+
+Rationale: A user may spam a like button for a comment.
+
+Input: Click like button repeatedly.
+
+Expected Output: Alert message notifying the user to not spam.
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+<td><a title="Test Title: test case for requirement 6
+
+Test For: RQ06
+
+Description: Testing comment dislike spam prevention.
+
+Rationale: A user may spam a dislike button for a comment.
+
+Input: Click dislike button repeatedly.
+
+Expected Output: Alert message notifying the user to not spam.
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td><a href="#RQ07" title="The allowed uploaded file format should be PDF with extension .pdf only.">RQ07</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a title="Test Title: test case for requirement 7
+
+Test For: RQ07
+
+Description: Testing uploading files of PDF format.
+
+Rationale: Users are allowed to upload PDF files only.
+
+Input: Upload PDF file.
+
+Expected Output: File is uploaded successfuly.
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+<td></td>
+</tr>
+<tr><td><a href="#RQ08" title="If the uploaded file format is not .pdf, the system should alert the user.">RQ08</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a title="Test Title: test case for requirement 8
+
+Test For: RQ08
+
+Description: Testing uploading files of non PDF format.
+
+Rationale: Users are not allowed to upload non PDF files.
+
+Input: Upload DOC file.
+
+Expected Output: Alert message
+
+Actual Output: As expected
+
+Diagnosis: None.
+
+Status: P
+
+Signature: Yussuf
+
+Date: 2020-05-24
+
+"><font color="green">PASSED</font></a></td>
+</tr>
+</table>
+<h2>Requirements</h2>
+<h3 id="RQ01">RQ01</h3>
+User should be able to search for an article by its title.<br/><p><a href="#matrix">Top</a></p>
+<h3 id="RQ02">RQ02</h3>
+User should be able to search for an article by its highlights.<br/><p><a href="#matrix">Top</a></p>
+<h3 id="RQ03">RQ03</h3>
+User should be able to search for an article by its abstract.<br/><p><a href="#matrix">Top</a></p>
+<h3 id="RQ04">RQ04</h3>
+User should be able to search for an article by its author.<br/><p><a href="#matrix">Top</a></p>
+<h3 id="RQ05">RQ05</h3>
+Users should be able to like/dislike each comment once only.<br/><p><a href="#matrix">Top</a></p>
+<h3 id="RQ06">RQ06</h3>
+If a user spams like/dislike, the system should alert the user to not spam.<br/><p><a href="#matrix">Top</a></p>
+<h3 id="RQ07">RQ07</h3>
+The allowed uploaded file format should be PDF with extension .pdf only.<br/><p><a href="#matrix">Top</a></p>
+<h3 id="RQ08">RQ08</h3>
+If the uploaded file format is not .pdf, the system should alert the user.<br/><p><a href="#matrix">Top</a></p>
+<h2>Test cases</h2>
+<h3 id="T001">T001</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 1<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ01<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing search by article's title.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>Confirm that a user can search by title.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>Learn Python Two<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Article titled Learn Python Two<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T002">T002</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 2<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ02<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing search by article's highlights.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>Confirm that a user can search by highlights.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>online food ordering system<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Article titled Learn Python Two<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T003">T003</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 3<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ03<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing search by article's abstract.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>Confirm that a user can search by abstract.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>This lab is a follow-up to Lab 2<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Article titled Learn Python Two<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T004">T004</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 4<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ04<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing search by article's author.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>Confirm that a user can search by author.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>mohamedsukri11@hotmail.com<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Article titled Learn Python Two<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>The system can't find results by article's author name.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>F<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T005">T005</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 5<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ05<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing whether a user can like a comment.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>Confirm that a user can like comments.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>Click Like button.<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Like count increases.<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T005a">T005a</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 5<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ05<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing whether a user can dislike a comment.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>Confirm that a user can dislike a comment.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>Click dislike button<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Dislike counter increases.<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T006">T006</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 6<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ06<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing comment like spam prevention.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>A user may spam a like button for a comment.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>Click like button repeatedly.<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Alert message notifying the user to not spam.<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T006a">T006a</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 6<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ06<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing comment dislike spam prevention.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>A user may spam a dislike button for a comment.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>Click dislike button repeatedly.<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Alert message notifying the user to not spam.<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T007">T007</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 7<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ07<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing uploading files of PDF format.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>Users are allowed to upload PDF files only.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>Upload PDF file.<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>File is uploaded successfuly.<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+<h3 id="T008">T008</h3>
+<table>
+<tr>
+<td>Test Title:</td><td>test case for requirement 8<br/></td>
+</tr>
+<tr>
+<td>Test For:</td><td>RQ08<br/></td>
+</tr>
+<tr>
+<td>Description:</td><td>Testing uploading files of non PDF format.<br/></td>
+</tr>
+<tr>
+<td>Rationale:</td><td>Users are not allowed to upload non PDF files.<br/></td>
+</tr>
+<tr>
+<td>Input:</td><td>Upload DOC file.<br/></td>
+</tr>
+<tr>
+<td>Expected Output:</td><td>Alert message<br/></td>
+</tr>
+<tr>
+<td>Actual Output:</td><td>As expected<br/></td>
+</tr>
+<tr>
+<td>Diagnosis:</td><td>None.<br/></td>
+</tr>
+<tr>
+<td>Status:</td><td>P<br/></td>
+</tr>
+<tr>
+<td>Signature:</td><td>Yussuf<br/></td>
+</tr>
+<tr>
+<td>Date:</td><td>2020-05-24<br/></td>
+</tr>
+</table>
+<p><a href="#matrix">Top</a></p>
+
+<script>
+    function showDiv() {
+       document.getElementById('TemplateInformation').style.display = "block";
+    }
+</script>
+
+<input type="button" value="Show format for srs.txt and test.txt" onclick="showDiv()" />
+
+<div id="TemplateInformation"  style="display:none;" >
+
+<pre>
+=====================
+Template for srs.txt
+=====================
+
+@RQ01
+
+This is my great requirement.
+
+
+=====================
+Template for test.txt
+=====================
+
+@T001
+
+Test title: test case for requirement 1
+
+Test for: RQ01
+
+Description: None.
+
+Rationale: None.
+
+Input:
+
+Something.
+
+Expected output:
+
+Something else.
+
+Actual output:
+
+As expected.
+
+Diagnosis:
+
+Status: F
+
+Signature: Hui
+
+Date: 2020-03-28
+
+</pre>
+</div>
+
+<p><i>
+    This test report was generated by RTM.py on
+       <script>
+            document.write(document.lastModified);
+       </script>
+    </i></p><p><i>Copyright (C) 2020 Lan Laboratory [lanhui@zjnu.edu.cn]</i></p></body>
+</html>
