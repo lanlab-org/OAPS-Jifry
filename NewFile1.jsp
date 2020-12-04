@@ -108,7 +108,7 @@ footer
 <a href="Controller?page=contact">Contact</a>
 <a href="Controller?page=admin">Admin</a>
 
-<form action="/OOAD/Controller" method="post">
+<form action="Controller" method="post">
 <input type="hidden" name="page" value="select">
 <select name="option">
 <option value="Articles">Articles</option>
@@ -116,7 +116,7 @@ footer
 <button>go</button>
 </form>
 
-<form action="/OOAD/Controller" method="post">
+<form action="Controller" method="post">
 <input type="hidden" name="page" value="search">
 <input type="text" name="search2" required>
 <button>search</button>
@@ -124,7 +124,7 @@ footer
 </nav>
 </header>
 
-<sql:setDataSource user="root" password="Fathihachellam.1" url="jdbc:mysql://localhost:3306/ooad?autoReconnect=true&&useSSL=false" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="root" password="123456" url="jdbc:mysql://localhost:3306/ooad?autoReconnect=true&&useSSL=false" driver="com.mysql.jdbc.Driver" var="db"/>
 
 <sql:query var="physical" dataSource="${ db}">
 select * from article where subject="Physical Science";
@@ -186,6 +186,7 @@ select * from article where subject="Mathematics";
 <a class="subitem" href="Controller?page=view-article&title=${ row.title}"><c:out value="${ row.title}"></c:out></a><br>
 </c:forEach>
 
+<a class="list-group-item" href="Recommand.jsp">Recommand</a>
 </div>
 </div>
 </div>
