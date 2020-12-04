@@ -55,7 +55,10 @@ public class Controller extends HttpServlet {
 		
 		if(page.equals("like")||page.equals("dislike"))
 		{
-			String ip = request.getRemoteAddr();
+			String ip = request.getHeader("x-forwarded-for");		// Use Http request header to find user's real ip if user access with proxy
+			if(ip == null){
+				ip = request.getRemoteAddr();
+			}
 			String title = request.getParameter("title");
 			
 			int a = -1;
@@ -98,7 +101,10 @@ public class Controller extends HttpServlet {
 		
 //		if(page.equals("dislike"))
 //		{
-//			String ip = request.getRemoteAddr();
+//			String ip = request.getHeader("x-forwarded-for");
+			if(ip == null){
+				ip = request.getRemoteAddr();
+			}
 //			String title = request.getParameter("title");
 //
 //			int a = 0;
@@ -138,7 +144,10 @@ public class Controller extends HttpServlet {
 		{
 			int a=-1;
 			String title = request.getParameter("title");
-			String ip = request.getRemoteAddr();
+			String ip = request.getHeader("x-forwarded-for");
+			if(ip == null){
+				ip = request.getRemoteAddr();
+			}
 			int id = Integer.parseInt(request.getParameter("id"));
 			if(page.equals("comments_like"))
 			{
@@ -184,7 +193,10 @@ public class Controller extends HttpServlet {
 //		if(page.equals("comments_dislike"))
 //		{
 //			String title = request.getParameter("title");
-//			String ip = request.getRemoteAddr();
+//			String ip = request.getHeader("x-forwarded-for");
+			if(ip == null){
+				ip = request.getRemoteAddr();
+			}
 //			int id = Integer.parseInt(request.getParameter("id"));
 //
 //			int a = 0;
