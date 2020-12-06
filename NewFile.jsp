@@ -189,7 +189,7 @@ footer
 <sql:setDataSource user="root" password="Fathihachellam.1" url="jdbc:mysql://localhost:3306/ooad?autoReconnect=true&&useSSL=false" driver="com.mysql.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
-select * from article where subject='<%=request.getAttribute("subject") %>'
+select * from article where subject='<%=request.getAttribute("subject") %>' order by time desc
 </sql:query>
 
 <div>
