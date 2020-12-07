@@ -1,0 +1,7 @@
+The things I have done (What I still remember):
+0、Organize the messy resources, design and modify the database to make the project run；
+1、The function of hiding or displaying the article is added;
+2、The administrator can edit and add subject; 
+3、The problem of Chinese garbled code is solved; 
+4、The type and size of uploaded files are limited；
+5、Fixed some bugs in the original project;
