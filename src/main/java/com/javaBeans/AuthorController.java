@@ -81,9 +81,6 @@ public class AuthorController extends HttpServlet {
 			
 			if(status)
 			{
-
-
-//				request.setAttribute("email",email);
 				request.getRequestDispatcher("AuthorHome.jsp").forward(request, response);
 			}
 			
@@ -189,35 +186,9 @@ public class AuthorController extends HttpServlet {
 			
 
 			DB db = new DB();
-/*			boolean checkstatus = false;
-			
-			try
-			{
-				checkstatus = db.checktitle(title);	
-			}
-			
-			catch(SQLException e)
-			{
-				e.printStackTrace();
-			}
-			
-			if(checkstatus)
-			{
-				//JOptionPane.showMessageDialog(null, "com.javaBean.Article Title is already exist please try anotherone ", "Info", JOptionPane.INFORMATION_MESSAGE);
-				
-				request.setAttribute("title", title);
-				request.setAttribute("highlights", highlights);
-				request.setAttribute("abstracts", abstracts);
-				request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
-			}
-			
-			else
-			{				
-*/			
 			
 			if(title.length() > 100)
 			{
-				//JOptionPane.showMessageDialog(null, "you have typed more than 100 letters in Highlights", "Info", JOptionPane.INFORMATION_MESSAGE);
 				request.getSession().setAttribute("info","title长度不能超过100个字符");
 				request.setAttribute("title", oldtitle);
 				request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
@@ -225,7 +196,6 @@ public class AuthorController extends HttpServlet {
 			
 			else if(highlights.length() > 250)
 			{
-				//JOptionPane.showMessageDialog(null, "you have typed more than 250 letters in Highlights", "Info", JOptionPane.INFORMATION_MESSAGE);
 				request.getSession().setAttribute("info","highlight长度不能超过250个字符");
 				request.setAttribute("title", oldtitle);
 				request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
@@ -233,7 +203,6 @@ public class AuthorController extends HttpServlet {
 			
 			else if(abstracts.length() > 999)
 			{
-				//JOptionPane.showMessageDialog(null, "you have typed more than 1000 letters in abstract", "Info", JOptionPane.INFORMATION_MESSAGE);
 				request.getSession().setAttribute("info","abstract长度不能超过999个字符");
 				request.setAttribute("title", oldtitle);
 				request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
@@ -249,8 +218,6 @@ public class AuthorController extends HttpServlet {
 				a.setTime(time);
 				a.setOldtitle(oldtitle);
 				
-//				DB db = new DB();
-				
 				try
 				{
 					db.updateArticle(a);
@@ -263,7 +230,6 @@ public class AuthorController extends HttpServlet {
 				
 				request.getRequestDispatcher("AuthorHome.jsp").forward(request, response);
 			}
-//		} else
 			
 		}
 		

@@ -4,7 +4,6 @@ import com.javaBean.Administrator;
 import com.javaBean.Article;
 import com.javaBean.Author;
 import com.javaBean.Subject;
-
 import java.sql.*;
 
 public class DB {
@@ -327,7 +326,6 @@ public class DB {
 		connect();
 
 		boolean result = false;
-//		int i = 0;
 
 		String sql = "select * from subject where subject=?";
 
@@ -340,7 +338,6 @@ public class DB {
 
 		while(rs.next())
 		{
-//			i = 1;
 			result= true;
 			break;
 		}
@@ -349,18 +346,11 @@ public class DB {
 
 		return result;
 	}
-
-
-
-	//	public boolean check_popular(String ip, String title, int a) throws SQLException
-//	{
 	public void check_popular(String ip, String title, int a) throws SQLException
 	{
 		connect();
 
-//		boolean result = false;
 		int i = 0;
-
 
 
 		String sql = "insert into love_article(ip, title, prefer) values(?, ?, ?)";
@@ -385,7 +375,6 @@ public class DB {
 			ps3.setString(2, ip);
 			ps3.setString(3, title);
 			ps3.executeUpdate();
-//			result = false;
 		}
 
 		else if(i==0)
@@ -395,13 +384,11 @@ public class DB {
 			ps.setString(2, title);
 			ps.setInt(3, a);
 			ps.executeUpdate();
-//			result = true;
 		}
 
 
 		close();
 
-//		return result;
 	}
 
 	/*
@@ -412,15 +399,11 @@ public class DB {
 	the required operation is dislike, and a = 1 if it's like.
 
 	*/
-//	public boolean check_comments_popular(String ip, int id, int a) throws SQLException
-//	{
 	public void check_comments_popular(String ip, int id, int a) throws SQLException
 	{
 		connect();
 
-//		boolean result = false;
 		int i = 0;
-
 
 
 		String sql = "insert into love_comment(ip, cid, prefer) values(?, ?, ?)";
@@ -445,7 +428,6 @@ public class DB {
 			ps3.setString(2, ip);
 			ps3.setInt(3, id);
 			ps3.executeUpdate();
-//			result = false;
 		}
 
 		else if(i==0)
@@ -455,13 +437,10 @@ public class DB {
 			ps.setInt(2, id);
 			ps.setInt(3, a);
 			ps.executeUpdate();
-//			result = true;
 		}
-
 
 		close();
 
-//		return result;
 	}
 
 

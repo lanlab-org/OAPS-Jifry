@@ -4,7 +4,6 @@ package com.javaBeans;
 import com.database.DB;
 import com.javaBean.Administrator;
 import com.javaBean.Subject;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -133,8 +132,6 @@ public class AdministorController extends HttpServlet {
             }
 
             if (checkstatus) {
-                //JOptionPane.showMessageDialog(null, "com.javaBean.Article Title is already exist please try anotherone ", "Info", JOptionPane.INFORMATION_MESSAGE);
-
                 request.setAttribute("subject", oldsubject);
 
                 request.getRequestDispatcher("AdministratorEdit.jsp").forward(request, response);
@@ -142,7 +139,6 @@ public class AdministorController extends HttpServlet {
 
 
                 if (newsubject.length() > 30) {
-                    //JOptionPane.showMessageDialog(null, "you have typed more than 100 letters in Highlights", "Info", JOptionPane.INFORMATION_MESSAGE);
                     request.getSession().setAttribute("info", "subject name长度不能超过30个字符");
                     request.setAttribute("subject", oldsubject);
                     request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
@@ -161,7 +157,6 @@ public class AdministorController extends HttpServlet {
 
                     request.getRequestDispatcher("AdministratorHome.jsp").forward(request, response);
                 }
-//		} else
 
             }
 
