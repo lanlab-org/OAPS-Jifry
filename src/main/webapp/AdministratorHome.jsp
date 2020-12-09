@@ -103,7 +103,7 @@
             <th></th>
 
         </tr>
-        <c:forEach items="${result.rows}" var="row">
+        <c:forEach items="${result}" var="row">
             <tr>
                 <td><c:out value="${ row.sid}"></c:out></td>
                 <td><c:out value="${ row.subject}"></c:out></td>

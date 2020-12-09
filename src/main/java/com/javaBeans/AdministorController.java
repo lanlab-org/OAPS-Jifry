@@ -45,7 +45,6 @@ public class AdministorController extends HttpServlet {
             if (status) {
                 HttpSession session = request.getSession();
                 session.setAttribute("admin_login","yes");
-
                 request.getRequestDispatcher("AdministratorHome.jsp").forward(request, response);
             } else {
                 request.setAttribute("msg", "invalid");
