@@ -182,7 +182,9 @@ select * from article where subject="Mathematics";
 <c:forEach items="${result.rows}" var="row">
 <c:set value="${search2}" var="search2"></c:set>
 <tr>
-<td><c:out value="${row.title}"></c:out></td>
+<td>
+	<a class="subitem" href="Controller?page=view-article&title=${ row.title}">
+	<c:out value="${row.title}"></c:out></a></td>
 </tr>
 </c:forEach>
 </table>
@@ -194,7 +196,8 @@ select * from article where subject="Mathematics";
 
 <a class="list-group-item" href="Controller?page=subject&id=Computer Science">Computer Science</a>
 <c:forEach items="${ computer.rows}" var="row">
-<a class="subitem" href="Controller?page=view-article&title=${ row.title}"><c:out value="${ row.title}"></c:out></a><br>
+<a class="subitem" href="Controller?page=view-article&title=${ row.title}">
+<c:out value="${ row.title}"></c:out></a><br>
 </c:forEach>
 
 <a class="list-group-item" href="Controller?page=subject&id=Medical Science">Medical Science</a>
