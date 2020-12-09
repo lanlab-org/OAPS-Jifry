@@ -31,7 +31,7 @@ public abstract class AbstractMapperInterceptor implements MapperInterceptor{
      * @throws InstantiationException
      * @throws IllegalAccessException
      */
-    protected Object processQuery(Connection conn, Method method, Object[] args) throws SQLException, InvocationTargetException, IntrospectionException, InstantiationException, IllegalAccessException {
+    protected Object processQuery(Connection conn, Method method, Object[] args) throws Throwable {
         Class<?> returnType = method.getReturnType();
         boolean many = Collection.class.isAssignableFrom(returnType);
         if(!many){
@@ -49,7 +49,7 @@ public abstract class AbstractMapperInterceptor implements MapperInterceptor{
      * @return
      * @throws SQLException
      */
-    protected int processUpdate(Connection conn, Method method, Object[] args) throws SQLException{
+    protected int processUpdate(Connection conn, Method method, Object[] args) throws Throwable{
         return excuteUpdate(conn, method, args);
     }
 
@@ -61,11 +61,11 @@ public abstract class AbstractMapperInterceptor implements MapperInterceptor{
         }
     }
 
-    protected abstract Object excuteOne(Connection conn, Method method, Object[] args) throws SQLException, IntrospectionException, IllegalAccessException, InstantiationException, InvocationTargetException;
+    protected abstract Object excuteOne(Connection conn, Method method, Object[] args) throws Throwable;
 
-    protected abstract Collection<?> excuteMany(Connection conn, Method method, Object[] args) throws SQLException, IllegalAccessException, InstantiationException, InvocationTargetException, IntrospectionException;
+    protected abstract Collection<?> excuteMany(Connection conn, Method method, Object[] args) throws Throwable;
 
-    protected abstract int excuteUpdate(Connection conn, Method method, Object[] args) throws SQLException;
+    protected abstract int excuteUpdate(Connection conn, Method method, Object[] args) throws Throwable;
 
     /**
      * 取得该bean类的字段和属性描述器的映射

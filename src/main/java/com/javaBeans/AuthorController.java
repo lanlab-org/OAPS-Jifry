@@ -3,6 +3,7 @@ package com.javaBeans;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,9 @@ import com.database.DB;
 import com.javaBean.Administrator;
 import com.javaBean.Article;
 import com.javaBean.Author;
+import com.javaBean.Subject;
+import com.mapper.mapper.SubjectMapper;
+import com.util.DBUtil;
 
 /**
  * Servlet implementation class com.javaBeans.AuthorController
@@ -22,7 +26,8 @@ import com.javaBean.Author;
 public class AuthorController extends HttpServlet {
 	HttpSession session;
 	private static final long serialVersionUID = 1L;
-       
+	private SubjectMapper mapper = DBUtil.getMapper(SubjectMapper.class);
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,12 +39,15 @@ public class AuthorController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String page = request.getParameter("page");
 		
 		if(page == null)
 		{
+			List<Subject> subjects = mapper.selectAll();
+			request.getSession().setAttribute("result", subjects);
 			request.getRequestDispatcher("AuthorHome.jsp").forward(request, response);
 		}
 		
@@ -52,7 +60,8 @@ public class AuthorController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String page = request.getParameter("page");
 		HttpSession session=request.getSession();

@@ -60,6 +60,7 @@ public class MyDataSource implements DataSource {
         try {
             Class.forName(driver);
             Connection connection = DriverManager.getConnection(url, username, password);
+            connection.setAutoCommit(autoCommit);
             return connection;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

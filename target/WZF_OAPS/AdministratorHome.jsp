@@ -73,11 +73,11 @@
     </style>
 </head>
 <body>
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8" driver="com.mysql.jdbc.Driver" var="db"/>
+<%--<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8" driver="com.mysql.jdbc.Driver" var="db"/>--%>
 
-<sql:query var="result" dataSource="${ db}">
-    select * from subject order by parentsid
-</sql:query>
+<%--<sql:query var="result" dataSource="${ db}">--%>
+<%--    select * from subject order by parentsid--%>
+<%--</sql:query>--%>
 
 <header>
     <h1>Admin Subject</h1>
@@ -103,7 +103,7 @@
             <th></th>
 
         </tr>
-        <c:forEach items="${result.rows}" var="row">
+        <c:forEach items="${result}" var="row">
             <tr>
                 <td><c:out value="${ row.sid}"></c:out></td>
                 <td><c:out value="${ row.subject}"></c:out></td>

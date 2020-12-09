@@ -33,10 +33,7 @@ public class AutoCommitMapperInvocationHandler extends AbstractMapperInvocationH
      */
     @Override
     protected void processPost() throws SQLException {
-        Connection connection = getConnectionLocalHolder().getCurrentConnection();
-        if (connection != null){
-            connection.commit();
-        }
+        getConnectionLocalHolder().commit();
     }
 
     /**
@@ -55,9 +52,6 @@ public class AutoCommitMapperInvocationHandler extends AbstractMapperInvocationH
      */
     @Override
     protected void processException(Throwable e) throws SQLException {
-        Connection connection = getConnectionLocalHolder().getCurrentConnection();
-        if (connection != null){
-            connection.rollback();
-        }
+        getConnectionLocalHolder().rollback();
     }
 }

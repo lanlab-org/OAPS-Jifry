@@ -9,6 +9,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.*;
 
@@ -54,8 +55,7 @@ public class AnnotationMapperInterceptor extends AbstractMapperInterceptor{
      * @throws InvocationTargetException
      */
     @Override
-    protected Object excuteOne(Connection conn, Method method, Object[] args)
-        throws SQLException, IntrospectionException, IllegalAccessException, InstantiationException, InvocationTargetException {
+    protected Object excuteOne(Connection conn, Method method, Object[] args) throws Throwable {
         //读取Query中的值
         Query query = method.getAnnotation(Query.class);
         if (query == null){
@@ -65,8 +65,10 @@ public class AnnotationMapperInterceptor extends AbstractMapperInterceptor{
         //生成PrepareStatement，并且将参数注入到pstm中
         PreparedStatement pstm = conn.prepareStatement(sql);
         int i = 1;
-        for (Object arg : args) {
-            pstm.setObject(i++, arg);
+        if (args != null){
+            for (Object arg : args) {
+                pstm.setObject(i++, arg);
+            }
         }
         //执行查询
         ResultSet rs = pstm.executeQuery();
@@ -102,7 +104,7 @@ public class AnnotationMapperInterceptor extends AbstractMapperInterceptor{
     }
 
     @Override
-    protected Collection<?> excuteMany(Connection conn, Method method, Object[] args) throws SQLException, IllegalAccessException, InstantiationException, InvocationTargetException, IntrospectionException {
+    protected Collection<?> excuteMany(Connection conn, Method method, Object[] args) throws Throwable {
         Query query = method.getAnnotation(Query.class);
         if (query == null){
             throw new SQLException("该方法无对应的sql语句");
@@ -110,32 +112,49 @@ public class AnnotationMapperInterceptor extends AbstractMapperInterceptor{
         String sql = query.value();
         PreparedStatement pstm = conn.prepareStatement(sql);
         int i = 1;
-        for (Object arg : args) {
-            pstm.setObject(i++, arg);
+        if (args != null){
+            for (Object arg : args) {
+                pstm.setObject(i++, arg);
+            }
         }
         ResultSet rs = pstm.executeQuery();
         //取得集合的类型
         Class<? extends Collection> collectionType = (Class<? extends Collection>) method.getReturnType();
         //取得集合元素的类型
-        Class<?> beanClass = ((ParameterizedType)method.getGenericReturnType()).getActualTypeArguments()[0].getClass();
-        Collection collection = collectionType.newInstance();
+        Type type = ((ParameterizedType) method.getGenericReturnType()).getActualTypeArguments()[0];
+        Class<?> beanClass = Class.forName(type.getTypeName());
+        if(beanClass == null){
+            throw new SQLException("无对应的bean类型");
+        }
+        Collection collection = null;
+        //其他类型暂时就先不支持了，主要是要处理List
+        if (List.class.isAssignableFrom(collectionType)){
+            collection = new ArrayList();
+        }else if (Collection.class.isAssignableFrom(collectionType)){
+            collection = new ArrayList();
+        }
+        if(collection == null){
+            throw new SQLException("暂不支持该类型" + collectionType.getName());
+        }
         //根据集合元素的类型获得对应的映射
         Map<String, PropertyDescriptor> propertyDescriptors = getPropertyDescriptor(beanClass);
-        List<PropertyDescriptor> descriptors = new ArrayList<>();
+        Map<Integer, PropertyDescriptor> descriptors = new HashMap<>();
         ResultSetMetaData metaData = rs.getMetaData();
         Integer columnCount = metaData.getColumnCount();
-        for (int col = 0; col < columnCount; col++) {
-            PropertyDescriptor descriptor = propertyDescriptors.get(metaData.getColumnName(col));
-            if (descriptor == null){
-                throw new SQLException("该列无对应的属性");
+        for (int col = 1; col <= columnCount; col++) {
+            String columnName = metaData.getColumnName(col);
+            PropertyDescriptor descriptor = propertyDescriptors.get(columnName);
+            if(descriptor != null){
+                descriptors.put(col, descriptor);
             }
-            descriptors.add(descriptor);
         }
         //读取每一行的结果,生成实例,注入属性值
         while (rs.next()){
             Object instance = beanClass.newInstance();
-            for (int col=0; col<columnCount; col++) {
-                descriptors.get(col).getWriteMethod().invoke(instance, rs.getObject(col));
+            for (Map.Entry<Integer, PropertyDescriptor> entry : descriptors.entrySet()) {
+                Integer column = entry.getKey();
+                PropertyDescriptor descriptor = entry.getValue();
+                descriptor.getWriteMethod().invoke(instance, rs.getObject(column));
             }
             collection.add(instance);
         }
@@ -151,7 +170,7 @@ public class AnnotationMapperInterceptor extends AbstractMapperInterceptor{
      * @throws SQLException
      */
     @Override
-    protected int excuteUpdate(Connection conn, Method method, Object[] args) throws SQLException {
+    protected int excuteUpdate(Connection conn, Method method, Object[] args) throws Throwable {
         Update update = method.getAnnotation(Update.class);
         if (update == null){
             throw new SQLException("无对应的sql语句");
@@ -159,8 +178,10 @@ public class AnnotationMapperInterceptor extends AbstractMapperInterceptor{
         String sql = update.value();
         PreparedStatement pstm = conn.prepareStatement(sql);
         int i = 1;
-        for (Object arg : args) {
-            pstm.setObject(i++, arg);
+        if (args != null){
+            for (Object arg : args) {
+                pstm.setObject(i++, arg);
+            }
         }
         int row = pstm.executeUpdate();
         return row;

@@ -46,4 +46,22 @@ public class DefaultLocalConnectionHolder implements LocalConnectionHolder{
         currentConnection.set(null);
         connection.close();
     }
+
+    @Override
+    public void rollback() throws SQLException {
+        Connection currentConnection = getCurrentConnection();
+        if (currentConnection == null || currentConnection.getAutoCommit()){
+            return;
+        }
+        currentConnection.rollback();
+    }
+
+    @Override
+    public void commit() throws SQLException {
+        Connection currentConnection = getCurrentConnection();
+        if (currentConnection == null || currentConnection.getAutoCommit()){
+            return;
+        }
+        currentConnection.commit();
+    }
 }

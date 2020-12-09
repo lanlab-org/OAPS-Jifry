@@ -12,4 +12,6 @@ public interface LocalConnectionHolder {
     Connection openConnection() throws SQLException;
     Connection getCurrentConnection();
     void closeConnection() throws SQLException;
+    void rollback() throws SQLException;
+    void commit() throws SQLException;
 }
