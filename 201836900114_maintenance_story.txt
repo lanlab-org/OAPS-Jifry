@@ -1,0 +1,11 @@
+GitHub link: 
+https://github.com/lanlab-org/OAPS-Jifry/tree/201836900114-zwq
+
+Group information:
+201836900106    洪  仪
+201836900113    许璐怡
+201836900114    朱文琦
+201836900115    诸斯涔
+
+concise maintenance story:
+添加了在主页自动推送popular article的功能，由于最初版本的jifry项目没有管理员界面，所以我们直接为项目在主页顶端添加了自动显示点赞最高的两篇文章以实现文章推荐功能，用户就可以根据推荐去浏览想看的文章。
