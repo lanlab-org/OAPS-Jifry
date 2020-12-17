@@ -151,6 +151,34 @@ footer
 select * from article a , subject s where a.sid=s.sid  and  hide="No" and (title like '%<%=request.getAttribute("search2") %>%' or abstracts like '%<%=request.getAttribute("search2") %>%' or highlight like '%<%=request.getAttribute("search2") %>%') order by time desc
 </sql:query>
 
+<!--  -->
+
+<!-- method highlighter reads picks user input keyword and database search results
+as arguments. It confirms if the input keyword is in the result set retrieved from
+database. if this is true, then the entire search results is highlighted. Else the result
+isn't highlighted -->
+<%!
+   public String highlighter(String s,String searchResults){
+	 String finalOutput = null;
+	 
+  if(searchResults !=  null){
+   
+    if(s.contains(searchResults))
+    {
+        finalOutput = "<span style='background-color:yellow'> " + s+ "  </span>";
+    }
+    else
+    {
+    	finalOutput = s;
+    }
+  
+  }
+  
+	return finalOutput;
+}
+
+ %>
+
 <div>
 <table class="table2">
 <tr>
@@ -160,8 +188,27 @@ select * from article a , subject s where a.sid=s.sid  and  hide="No" and (title
 <th>Time</th>
 <th>Popularity</th>
 </tr>
+
 <c:forEach items="${result.rows}" var="row">
-<c:set value="${search2}" var="search2"></c:set>
+
+<!-- setting results from database  into c: tag variable-->
+	<c:set  value="${search2}" var="search2"></c:set> 
+	<c:set var="subj_name" value="${row.subject}"/>
+ 	<c:set var="subj_title" value="${row.title}"></c:set> 
+ 
+	<!-- this scriplet accesses user input search string from servlet as well as from
+	database inorder to be used as arguments for the highlighter function -->
+	
+<%
+	String searchResults = (String)request.getAttribute("search2");
+	String subj_name = (String)pageContext.getAttribute("subj_name");
+	String subj_title = (String)pageContext.getAttribute("subj_title");
+	
+	//printing output in console for the purpose of debugging
+	System.out.println(searchResults);
+	System.out.println(subj_name );
+	System.out.println(subj_title );
+%>
 <tr>
 <td><c:out value="${row.subject}"></c:out></td>
 <td><a href="Controller?page=view-article&title=${row.title}"> <c:out value="${row.title}"></c:out> </a></td>
