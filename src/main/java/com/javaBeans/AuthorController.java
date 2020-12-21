@@ -16,17 +16,18 @@ import com.javaBean.Administrator;
 import com.javaBean.Article;
 import com.javaBean.Author;
 import com.javaBean.Subject;
+import com.mapper.mapper.ArticleMapper;
 import com.mapper.mapper.SubjectMapper;
 import com.util.DBUtil;
 
 /**
  * Servlet implementation class com.javaBeans.AuthorController
  */
-@WebServlet("/com.javaBeans.AuthorController")
+@WebServlet("/author")
 public class AuthorController extends HttpServlet {
 	HttpSession session;
 	private static final long serialVersionUID = 1L;
-	private SubjectMapper mapper = DBUtil.getMapper(SubjectMapper.class);
+	private ArticleMapper mapper = DBUtil.getMapper(ArticleMapper.class);
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -46,8 +47,8 @@ public class AuthorController extends HttpServlet {
 		
 		if(page == null)
 		{
-			List<Subject> subjects = mapper.selectAll();
-			request.getSession().setAttribute("result", subjects);
+			List<Article> articles = mapper.findWithSubject();
+			request.getSession().setAttribute("result", articles);
 			request.getRequestDispatcher("AuthorHome.jsp").forward(request, response);
 		}
 		

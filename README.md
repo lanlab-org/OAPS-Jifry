@@ -34,33 +34,23 @@
 ### 使用样例
 
 ```java
-public interface SubjectMapper{
-    
-    @Query("select * from subject order by parentsid")
-    List<Subject> selectAll();
-    
-    //Query中的sql语句写法同PrepareStatement,参数也请按序
-    @Query("select * from subject where id = ?")
-    Subject selectById(Integer id);
-    
-    //Update中的sql语句写法同PrepareStatement,参数也请按序
-    @Update("udpate subject set name = ? where id = ?")
-    void updateName(String name, Integer id);
+public interface ArticleMapper {
+    @Query("select * from article a, subject s where a.sid = s.sid")
+    List<Article> findWithSubject();
 }
 
 public class AuthorController extends HttpServlet{
     ...
     //实例化Mapper
-    private SubjectMapper mapper = DBUtil.getMapper(SubjectMapper.class);
+    private ArticleMapper mapper = DBUtil.getMapper(ArticleMapper.class);
     ...
         
     public void doGet...{
         ...
         if (page == null){
             //使用Mapper取得数据
-            List<Subject> subjects = mapper.selectAll();
-            request.getSession().setAttribute("result", subjects);
-        }
+            List<Article> articles = mapper.findWithSubject();
+            request.getSession().setAttribute("result", articles);}
         ...
     }
 }
@@ -77,7 +67,6 @@ public class AuthorController extends HttpServlet{
 <td><c:out value="${ row.subject}"></c:out></td>
 <td><c:out value="${ row.title}"></c:out></td>
 <td><c:out value="${ row.highlight}"></c:out></td>
-    <td><c:out value="${ row.hide}"></c:out></td>
 <td><a href="AuthorController?page=edit&title=${ row.title}">edit</a> ||
     <a href="AuthorController?page=delete&title=${ row.title}">delete</a>||
     <a href="AuthorController?page=show&title=${ row.title}">show</a>||
@@ -90,6 +79,26 @@ public class AuthorController extends HttpServlet{
 ### 实现方式
 
 ​	请看源码，有给注释
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

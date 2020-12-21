@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,16 +100,15 @@ footer
     <th>Hide</th>
 <th>Option</th>
 </tr>
-<c:forEach items="${result.rows}" var="row">
+<c:forEach items="${result}" var="row">
 <tr>
 <td><c:out value="${ row.subject}"></c:out></td>
 <td><c:out value="${ row.title}"></c:out></td>
-<td><c:out value="${ row.highlight}"></c:out></td>
-    <td><c:out value="${ row.hide}"></c:out></td>
+<td><c:out value="${ row.highlights}"></c:out></td>
 <td><a href="AuthorController?page=edit&title=${ row.title}">edit</a> ||
     <a href="AuthorController?page=delete&title=${ row.title}">delete</a>||
     <a href="AuthorController?page=show&title=${ row.title}">show</a>||
-    <a href="AuthorController?page=hide&title=${ row.title}">hide</a>
+    <a href="AuthorController?page=hide&title=${ row.title}">hide</a>||
 </td>
 </tr>
 </c:forEach>

@@ -7,7 +7,8 @@ public class Article {
 	public String subject, title, author, highlights, abstracts, oldtitle;
 	public String comment, user;
 	public Timestamp time;
-	
+
+
 	
 	public String getSubject() {
 		return subject;
