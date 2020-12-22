@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 
 /**
  * Servlet implementation class com.javaBeans.Controller
@@ -297,6 +298,16 @@ public class Controller extends HttpServlet {
 			
 		if(page.equals("post-article"))
 		{
+			String code = (String) request.getSession().getAttribute("verifyCodeValue");
+			String textCode = request.getParameter("verifyCode");
+			if (!code.equals(textCode)) {
+				request.getSession().setAttribute("info","验证码输入不正确！");
+				try {
+					request.getRequestDispatcher("NewFile.jsp").forward(request, response);
+				} catch (ServletException | IOException e) {
+					e.printStackTrace();
+				}
+			}
 			String subject = request.getParameter("subject");
 			String email = request.getParameter("email");
 			
