@@ -55,7 +55,7 @@ public class Controller extends HttpServlet {
 		
 		if(page.equals("like")||page.equals("dislike"))
 		{
-			String ip = request.getRemoteAddr();
+			String ip = getRemoteIP(request);	// Use Http request header to find user's real ip if user access with proxy
 			String title = request.getParameter("title");
 			
 			int a = -1;
@@ -72,7 +72,6 @@ public class Controller extends HttpServlet {
 			
 			try
 			{
-//				status = db.check_popular(ip, title, a);
 				db.check_popular(ip, title, a);
 			}
 			
@@ -81,64 +80,15 @@ public class Controller extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-//			if(status)
-//			{
-				request.setAttribute("title", title);
-				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-//			}
-//
-//			else
-//			{
-//				JOptionPane.showMessageDialog(null, "You have already liked the article.", "Info", JOptionPane.INFORMATION_MESSAGE);
-//
-//				request.setAttribute("title", title);
-//				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-//			}
+			request.setAttribute("title", title);
+			request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
 		}
-		
-//		if(page.equals("dislike"))
-//		{
-//			String ip = request.getRemoteAddr();
-//			String title = request.getParameter("title");
-//
-//			int a = 0;
-//
-//			DB db = new DB();
-//			boolean status = false;
-//
-//			try
-//			{
-////				status = db.check_popular(ip, title, a);
-//				db.check_popular(ip, title, a);
-//			}
-//
-//			catch(SQLException e)
-//			{
-//				e.printStackTrace();
-//			}
-//
-////			if(status)
-////			{
-//				request.setAttribute("title", title);
-//				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-////			}
-////
-////			else
-////			{
-////				JOptionPane.showMessageDialog(null,
-//// 				"You have already disliked the article", "Info", JOptionPane.INFORMATION_MESSAGE);
-////
-////				request.setAttribute("title", title);
-////				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-////			}
-//		}
-//
 		
 		if(page.equals("comments_like")||page.equals("comments_dislike"))
 		{
 			int a=-1;
 			String title = request.getParameter("title");
-			String ip = request.getRemoteAddr();
+			String ip = getRemoteIP(request);
 			int id = Integer.parseInt(request.getParameter("id"));
 			if(page.equals("comments_like"))
 			{
@@ -155,7 +105,6 @@ public class Controller extends HttpServlet {
 			
 			try
 			{
-//				status = db.check_comments_popular(ip, id, a);
 				db.check_comments_popular(ip, id, a);
 			}
 			
@@ -163,63 +112,10 @@ public class Controller extends HttpServlet {
 			{
 				e.printStackTrace();
 			}
-			
-//			if(status)
-//			{
-				request.setAttribute("title", title);
-				request.setAttribute("id", id);
-				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-//			}
-//
-//			else
-//			{
-//				JOptionPane.showMessageDialog(null, "You have already liked the comment.", "Info", JOptionPane.INFORMATION_MESSAGE);
-				
-//				request.setAttribute("title", title);
-//				request.setAttribute("id", id);
-//				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-//			}
+			request.setAttribute("title", title);
+			request.setAttribute("id", id);
+			request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
 		}
-		
-//		if(page.equals("comments_dislike"))
-//		{
-//			String title = request.getParameter("title");
-//			String ip = request.getRemoteAddr();
-//			int id = Integer.parseInt(request.getParameter("id"));
-//
-//			int a = 0;
-//
-//			DB db = new DB();
-//			boolean status = false;
-//
-//			try
-//			{
-////				status = db.check_comments_popular(ip, id, a);
-//				db.check_comments_popular(ip, id, a);
-//			}
-//
-//			catch(SQLException e)
-//			{
-//				e.printStackTrace();
-//			}
-//
-////			if(status)
-////			{
-//				request.setAttribute("title", title);
-//				request.setAttribute("id", id);
-//				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-////			}
-////
-////			else
-////			{
-////				JOptionPane.showMessageDialog(null, "You have already disliked the comment", "Info", JOptionPane.INFORMATION_MESSAGE);
-////
-////				request.setAttribute("title", title);
-////				request.setAttribute("id", id);
-////				request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-////			}
-//
-//		}
 
         if(page.equals("administrator"))
         {
@@ -292,7 +188,6 @@ public class Controller extends HttpServlet {
 			request.setAttribute("subject", subject);
 
 			request.getRequestDispatcher("NewFile.jsp").forward(request, response);
-//			response.sendRedirect("NewFile.jsp");
 		}
 			
 		if(page.equals("post-article"))
@@ -315,8 +210,6 @@ public class Controller extends HttpServlet {
 			
 			if(status)
 			{
-				//JOptionPane.showMessageDialog(null, "Sorry you have been blcoked, please contact Author", "Info", JOptionPane.INFORMATION_MESSAGE);
-				
 				request.setAttribute("subject", subject);
 				request.getRequestDispatcher("NewFile.jsp").forward(request, response);
 			}
@@ -358,7 +251,6 @@ public class Controller extends HttpServlet {
 				String comment2 = comment.toLowerCase();
 				if (comment2.contains("fuck") || comment2.contains("motherfucker") || comment2.contains("nigga") || comment2.contains("bitch")
 						|| comment2.contains("idiot") || comment2.contains("stupid") || comment2.contains("dick") || comment2.contains("boobs") || comment2.contains("pussy") || comment2.contains("suck")) {
-//				System.out.println("illegal");
 					request.setAttribute("title", title);
 					request.setAttribute("msg", "using improper words, please use proper words");
 					request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
@@ -392,18 +284,10 @@ public class Controller extends HttpServlet {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-
-//			System.out.println(email);
-//			System.out.println(comment);
-//			System.out.println(title);
-//			System.out.println(time);
-
 					request.setAttribute("title", title);
 					request.getRequestDispatcher("ViewArticle.jsp").forward(request, response);
-
 				}
-
-
+				
 		}
 		
 		if(page.equals("authorarticle"))
@@ -414,6 +298,13 @@ public class Controller extends HttpServlet {
 			request.getRequestDispatcher("AuthorArticle.jsp").forward(request, response);
 		}
 		
+	}
+
+	public String getRemoteIP(HttpServletRequest request) {
+		if (request.getHeader("x-forwarded-for") == null) {
+			return request.getRemoteAddr();
+		}
+		return request.getHeader("x-forwarded-for");
 	}
 
 }

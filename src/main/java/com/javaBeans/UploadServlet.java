@@ -69,16 +69,8 @@ public class UploadServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        response.setContentType("text/plain;charset=UTF-8");
         if (checkstatus) {
             request.getSession().setAttribute("suggestion", "已经存在的article title,不能重复发布哦");
-            //JOptionPane.showMessageDialog(null, "The article title already exists.\nPlease use another one. ", "Info", JOptionPane.INFORMATION_MESSAGE);
-
-//            request.setAttribute("email", author);
-//            request.setAttribute("subject", subject);
-//            request.setAttribute("title", title);
-//            request.setAttribute("highlights", highlights);
-//            request.setAttribute("abstracts", abstracts);
             request.getRequestDispatcher("PostArticle.jsp").forward(request, response);
         } else {
 
@@ -99,11 +91,7 @@ public class UploadServlet extends HttpServlet {
                 }
 
                 Timestamp time = new Timestamp(System.currentTimeMillis());
-
-//                response.setContentType("application/octet-stream");
-//                Part filePart = request.getPart("file");
-                String fileType = filePart.getContentType();// get the uploaded file type
-//				String fileName = filePart.getSubmittedFileName();
+                String fileType = filePart.getContentType();
                 String cd = filePart.getHeader("Content-Disposition");
                 String fileName = cd.substring(cd.lastIndexOf("=") + 2, cd.length() - 1);
                 String path = folderName + File.separator + fileName;
@@ -112,7 +100,6 @@ public class UploadServlet extends HttpServlet {
 
                 // if the uploaded file type is PDF, then upload the file to the server
                 if (fileType.equals("application/pdf")) {
-//
                     File file = new File(uploadPath+File.separator + fileName);
                     System.out.println(file.length()/(1024.0*1024));
                     if (file.length()/(1024.0*1024)>20)
@@ -190,23 +177,13 @@ public class UploadServlet extends HttpServlet {
 
                 } else {
                     // if the uploaded file type is not PDF, show an alert message
-
-//				JOptionPane.showMessageDialog(null, "Unsupported file format!.\nOnly PDF files are supported. ", "Info", JOptionPane.INFORMATION_MESSAGE);
-
-//                    request.setAttribute("email", author);
-//                    request.setAttribute("subject", subject);
-//                    request.setAttribute("title", title);
-//                    request.setAttribute("highlights", highlights);
-//                    request.setAttribute("abstracts", abstracts);
                     request.setAttribute("suggestion","Unsupported file format!.\nOnly PDF files are supported.");
                     request.getRequestDispatcher("PostArticle.jsp").forward(request, response);
-
                 }
-
-
             } catch (IOException | ServletException e) {
                 out.println(e);
             }
+            
         }
 
     }
