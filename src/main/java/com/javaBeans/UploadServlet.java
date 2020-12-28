@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import javax.swing.*;
 
 
 import com.database.DB;
@@ -49,6 +50,7 @@ public class UploadServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Part filePart = request.getPart("file");
         response.setContentType("text/plain;charset=UTF-8");
         String author = request.getParameter("author");
