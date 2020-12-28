@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@ body
 
 header
 {
-	background-color:black;
+	background-color:dodgerblue;
 	text-align:center;
 	height:70px;
 	margin-bottom:50px;
@@ -88,7 +89,7 @@ header input
 {
 	font-size:20px;
 	margin-bottom:20px;
-	color:black
+	color:dodgerblue
 }
 
 .table1 input
@@ -138,7 +139,7 @@ div
 
 footer
 {
-	background:black;
+	background:dodgerblue;
 	height:40px;
 	color:white;
 	text-align:center;
@@ -161,17 +162,11 @@ footer
 <a href="Controller?page=contact">Contact</a>
 <a href="Controller?page=administrator">Admin</a>
 
-<form action="Controller" method="post">
-<input type="hidden" name="page" value="select">
-<select name="option">
-<option value="Articles">Articles</option>
-</select>
-<button>go</button>
-</form>
+
 
 <form action="Controller" method="post">
 <input type="hidden" name="page" value="search">
-<input type="text" name="search2" required>
+<input type="text" name="search2">
 <button>search</button>
 </form>
 </nav>
@@ -183,11 +178,12 @@ footer
 <table class="table1">
 <tr><td><h1>You are in <c:out value="${subject}"></c:out></h1></td></tr>
 <tr><td><input type="email" name="email"  required placeholder="Enter your email"></td></tr>
-<tr><td><button>Post Article</button></td></tr>
+    <tr><td><input type="text" name="authorName"  required placeholder="Enter your name"></td></tr>
+    <tr><td><button>Post Article</button></td></tr>
 </table>
 </form>
 
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
 select * from article a , subject s where a.sid=s.sid  and subject='<%=request.getAttribute("subject") %>' and hide="No"
@@ -201,12 +197,22 @@ select * from article a , subject s where a.sid=s.sid  and subject='<%=request.g
 <th>Time</th>
 <th>Popularity</th>
 </tr>
+
 <c:forEach items="${result.rows}" var="row">
 <tr>
-<td><a href="Controller?page=view-article&title=${ row.title}"> <c:out value="${ row.title}"></c:out> </a></td>
+<td><a href="Controller?page=view-article&title=${ row.title}&id=${row.aid}"> <c:out value="${ row.title}"></c:out> </a></td>
 <td><c:set var = "string" value = "${ fn:length(row.author)}"/><c:out value="${ fn:substring(row.author, 0, 3)}***${ fn:substring(row.author, string-8, string)}"></c:out></td>
-<td><c:out value="${ row.time}"></c:out></td>
-<td><c:out value="${ row.filename}"></c:out></td>
+<td><fmt:formatDate value="${row.time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+    <sql:query var="result6" dataSource="${ db}">
+        select * from visit where aid="${ row.aid}";
+    </sql:query>
+
+    <c:set var="q" value="0"></c:set>
+    <c:forEach items="${ result6.rows}" var="row1">
+
+        <c:set var="q" value="${ q+1}"></c:set>
+    </c:forEach>
+<td><c:out value="${q}"></c:out></td>
 
 </tr>
 </c:forEach>

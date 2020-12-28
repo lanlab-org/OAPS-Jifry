@@ -46,7 +46,7 @@
 
         footer
         {
-            background:black;
+            background:dodgerblue;
             height:40px;
             color:white;
             text-align:center;

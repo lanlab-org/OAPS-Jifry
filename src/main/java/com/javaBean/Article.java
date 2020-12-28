@@ -7,9 +7,17 @@ public class Article {
 	public String subject, title, author, highlights, abstracts, oldtitle;
 	public String comment, user;
 	public Timestamp time;
-	
-	
-	public String getSubject() {
+	public Integer aid;
+
+    public Integer getAid() {
+        return aid;
+    }
+
+    public void setAid(Integer aid) {
+        this.aid = aid;
+    }
+
+    public String getSubject() {
 		return subject;
 	}
 	public void setSubject(String subject) {

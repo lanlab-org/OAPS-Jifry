@@ -18,7 +18,7 @@ body
 
 header
 {
-	background-color:black;
+	background-color:dodgerblue;
 	text-align:center;
 	height:70px;
 	margin-bottom:50px;
@@ -114,7 +114,7 @@ table button
 
 footer
 {
-	background:black;
+	background:dodgerblue;
 	height:40px;
 	color:white;
 	text-align:center;
@@ -148,7 +148,7 @@ footer
 
 <form action="Controller" method="post">
 <input type="hidden" name="page" value="search">
-<input type="text" name="search2" required>
+<input type="text" name="search2">
 <button>search</button>
 </form>
 </nav>
