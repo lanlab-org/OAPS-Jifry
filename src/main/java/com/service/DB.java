@@ -1,15 +1,16 @@
-package com.database;
+package com.service;
 
 import com.javaBean.Administrator;
 import com.javaBean.Article;
 import com.javaBean.Author;
 import com.javaBean.Subject;
+
 import java.sql.*;
 
 public class DB {
 
 	public String root = "wzf";
-	public String url = "jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
+	public String url = "jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
 	public String password = "wzf";
 	public String Driver = "com.mysql.jdbc.Driver";
 	public Connection con;
@@ -40,7 +41,7 @@ public class DB {
 	{
 		connect();
 
-		String sql = "update article set title=?, highlight=?, abstracts=?, time=? where title=?";
+		String sql = "update article set title=?, highlight=?, abstracts=?, time=? where title=? and aid=?";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 
@@ -49,6 +50,7 @@ public class DB {
 		ps.setString(3, a.getAbstracts());
 		ps.setTimestamp(4, a.getTime());
 		ps.setString(5, a.getOldtitle());
+		ps.setInt(6, a.getAid());
 		ps.executeUpdate();
 
 		close();
@@ -69,26 +71,26 @@ public class DB {
 
 		close();
 	}
-	public void showArticle(String title) throws SQLException
+	public void showArticle(int aid) throws SQLException
 	{
 		connect();
-		String sql="update article set hide=? where title=?";
+		String sql="update article set hide=? where aid=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1,"No");
-		ps.setString(2,title);
+		ps.setInt(2,aid);
 		ps.executeUpdate();
 		close();
 
 
 
 	}
-	public void hideArticle(String title) throws SQLException
+	public void hideArticle(int aid) throws SQLException
 	{
 		connect();
-		String sql="update article set hide=? where title=?";
+		String sql="update article set hide=? where aid=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1,"Yes");
-		ps.setString(2,title);
+		ps.setInt(2,aid);
 		ps.executeUpdate();
 		close();
 
@@ -96,17 +98,25 @@ public class DB {
 
 	}
 
-	public void deleteArticle(String title) throws SQLException
+	public void deleteArticle(int aid) throws SQLException
 	{
 		connect();
 
-		String sql = "delete from article where title=?";
+		String sql = "delete from article where  aid=?";
 
 		PreparedStatement ps = con.prepareStatement(sql);
-
-		ps.setString(1, title);
+		ps.setInt(1, aid);
 		ps.executeUpdate();
+		String sql2 = "delete from comments where  aid=?";
 
+		PreparedStatement ps2 = con.prepareStatement(sql2);
+		ps2.setInt(1, aid);
+		ps2.executeUpdate();
+		String sql3 = "delete from comments where  aid=?";
+
+		PreparedStatement ps3 = con.prepareStatement(sql3);
+		ps3.setInt(1, aid);
+		ps3.executeUpdate();
 		close();
 
 	}
@@ -262,6 +272,36 @@ public class DB {
 
 		return result;
 	}
+public void addVisit(String id,String ip,String title) throws SQLException
+	{
+		int aid=-1;
+		if (id!=null&&!id.equals(""))
+		{
+			aid=Integer.parseInt(id);
+
+		}
+
+		connect();
+		String sql0="select * from visit where ip=? and aid=?";
+		PreparedStatement ps0 = con.prepareStatement(sql0);
+		ps0.setString(1,ip);
+		ps0.setInt(2,aid);
+		ResultSet resultSet = ps0.executeQuery();
+		if (!resultSet.next()&&aid!=-1)
+		{
+			Timestamp time = new Timestamp(System.currentTimeMillis());
+			String sql = "insert into visit(vid,aid,ip,vdate) values (?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,0);
+			ps.setInt(2,aid);
+			ps.setString(3,ip);
+			ps.setTimestamp(4,time);
+			ps.executeUpdate();
+		}
+		close();
+
+
+	}
 
 	public void blockAuthor(String author) throws SQLException
 	{
@@ -326,6 +366,7 @@ public class DB {
 		connect();
 
 		boolean result = false;
+//		int i = 0;
 
 		String sql = "select * from subject where subject=?";
 
@@ -338,6 +379,7 @@ public class DB {
 
 		while(rs.next())
 		{
+//			i = 1;
 			result= true;
 			break;
 		}
@@ -346,49 +388,59 @@ public class DB {
 
 		return result;
 	}
-	public void check_popular(String ip, String title, int a) throws SQLException
+
+
+
+	//	public boolean check_popular(String ip, String title, int a) throws SQLException
+//	{
+	public void check_popular(String ip1, int aid, int a,String title1) throws SQLException
 	{
+
+	    String ip="\""+ip1+"\"";
+	    String title="\""+title1+"\"";
 		connect();
-
 		int i = 0;
-
-
-		String sql = "insert into love_article(ip, title, prefer) values(?, ?, ?)";
-		String sql2 = "select * from love_article where ip=? and title=?";
-		String sql3 = "update love_article set prefer=? where ip=? and title=?";
+		String sql = "insert into love_article(ip, aid, prefer,title) values(?, ?, ?,?)";
+		String sql2 = "select * from love_article where ip=? and aid=?";
+		String sql3 = "update love_article set prefer=? where ip=? and aid=?";
 
 		PreparedStatement ps2 = con.prepareStatement(sql2);
 		ps2.setString(1, ip);
-		ps2.setString(2, title);
+		ps2.setInt(2, aid);
 
 		ResultSet rs = ps2.executeQuery();
 
-		while(rs.next())
+		if (rs.next())
 		{
 			i = 1;
-		}
 
+		}
+        System.out.println("i:"+i);
 		if(i==1)
 		{
 			PreparedStatement ps3 = con.prepareStatement(sql3);
 			ps3.setInt(1, a);
 			ps3.setString(2, ip);
-			ps3.setString(3, title);
+			ps3.setInt(3, aid);
 			ps3.executeUpdate();
+//			result = false;
 		}
 
 		else if(i==0)
 		{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, ip);
-			ps.setString(2, title);
+			ps.setInt(2, aid);
 			ps.setInt(3, a);
+			ps.setString(4,title);
 			ps.executeUpdate();
+//			result = true;
 		}
 
 
 		close();
 
+//		return result;
 	}
 
 	/*
@@ -399,11 +451,15 @@ public class DB {
 	the required operation is dislike, and a = 1 if it's like.
 
 	*/
+//	public boolean check_comments_popular(String ip, int id, int a) throws SQLException
+//	{
 	public void check_comments_popular(String ip, int id, int a) throws SQLException
 	{
 		connect();
 
+//		boolean result = false;
 		int i = 0;
+
 
 
 		String sql = "insert into love_comment(ip, cid, prefer) values(?, ?, ?)";
@@ -428,6 +484,7 @@ public class DB {
 			ps3.setString(2, ip);
 			ps3.setInt(3, id);
 			ps3.executeUpdate();
+//			result = false;
 		}
 
 		else if(i==0)
@@ -437,10 +494,13 @@ public class DB {
 			ps.setInt(2, id);
 			ps.setInt(3, a);
 			ps.executeUpdate();
+//			result = true;
 		}
+
 
 		close();
 
+//		return result;
 	}
 
 

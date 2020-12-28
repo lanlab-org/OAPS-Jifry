@@ -1,4 +1,4 @@
-package com.javaBeans;
+package com.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
-import com.database.DB;
+
+import com.service.DB;
 import com.javaBean.Administrator;
 import com.javaBean.Article;
 import com.javaBean.Author;
 
 /**
- * Servlet implementation class com.javaBeans.AuthorController
+ * Servlet implementation class com.controller.AuthorController
  */
-@WebServlet("/com.javaBeans.AuthorController")
+@WebServlet("/com.controller.AuthorController")
 public class AuthorController extends HttpServlet {
 	HttpSession session;
 	private static final long serialVersionUID = 1L;
@@ -81,6 +81,9 @@ public class AuthorController extends HttpServlet {
 			
 			if(status)
 			{
+
+
+//				request.setAttribute("email",email);
 				request.getRequestDispatcher("AuthorHome.jsp").forward(request, response);
 			}
 			
@@ -146,18 +149,20 @@ public class AuthorController extends HttpServlet {
 		if(page.equals("edit"))
 		{
 			String title = request.getParameter("title");
-			String email = request.getParameter("email");
+			String aid = request.getParameter("aid");
+
 			
 			request.setAttribute("title", title);
-			request.setAttribute("email", email);
+			request.setAttribute("aid", aid);
 			request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
 		}
 		if (page.equals("hide"))
 		{
-			String title = request.getParameter("title");
+            String id = request.getParameter("aid");
+            int aid=Integer.parseInt(id);
 			DB db = new DB();
 			try {
-				db.hideArticle(title);
+				db.hideArticle(aid);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -165,10 +170,11 @@ public class AuthorController extends HttpServlet {
 		}
 		if (page.equals("show"))
 		{
-			String title = request.getParameter("title");
+			String id = request.getParameter("aid");
+			int aid=Integer.parseInt(id);
 			DB db = new DB();
 			try {
-				db.showArticle(title);
+				db.showArticle(aid);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -178,24 +184,20 @@ public class AuthorController extends HttpServlet {
 		if(page.equals("edit-form"))
 		{
 			String oldtitle = request.getParameter("old-title");
-			
 			String title = request.getParameter("title");
+			String id = request.getParameter("aid");
+			int aid=Integer.parseInt(id);
 			String highlights = request.getParameter("highlights");
 			String abstracts = request.getParameter("abstracts");
 			Timestamp time = new Timestamp(System.currentTimeMillis());
 			
 
 			DB db = new DB();
-			
-			if(title.length() > 100)
+
+
+			if(highlights.length() > 250)
 			{
-				request.getSession().setAttribute("info","title长度不能超过100个字符");
-				request.setAttribute("title", oldtitle);
-				request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
-			}
-			
-			else if(highlights.length() > 250)
-			{
+				//JOptionPane.showMessageDialog(null, "you have typed more than 250 letters in Highlights", "Info", JOptionPane.INFORMATION_MESSAGE);
 				request.getSession().setAttribute("info","highlight长度不能超过250个字符");
 				request.setAttribute("title", oldtitle);
 				request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
@@ -203,6 +205,7 @@ public class AuthorController extends HttpServlet {
 			
 			else if(abstracts.length() > 999)
 			{
+				//JOptionPane.showMessageDialog(null, "you have typed more than 1000 letters in abstract", "Info", JOptionPane.INFORMATION_MESSAGE);
 				request.getSession().setAttribute("info","abstract长度不能超过999个字符");
 				request.setAttribute("title", oldtitle);
 				request.getRequestDispatcher("AuthorEdit.jsp").forward(request, response);
@@ -217,6 +220,9 @@ public class AuthorController extends HttpServlet {
 				a.setAbstracts(abstracts);
 				a.setTime(time);
 				a.setOldtitle(oldtitle);
+				a.setAid(aid);
+				
+
 				
 				try
 				{
@@ -230,18 +236,21 @@ public class AuthorController extends HttpServlet {
 				
 				request.getRequestDispatcher("AuthorHome.jsp").forward(request, response);
 			}
+//		} else
 			
 		}
 		
 		if(page.equals("delete"))
 		{
-			String title = request.getParameter("title");
-			
+
+			String id = request.getParameter("aid");
+			int aid=Integer.parseInt(id);
+
 			DB db = new DB();
 			
 			try
 			{
-				db.deleteArticle(title);
+				db.deleteArticle(aid);
 			}
 			
 			catch(SQLException e)
@@ -278,13 +287,15 @@ public class AuthorController extends HttpServlet {
 		
 		if(page.equals("master-delete"))
 		{
-			String title = request.getParameter("title");
+			String id = request.getParameter("aid");
+			int aid=-1;
+			aid=Integer.parseInt(id);
 			
 			DB db = new DB();
 			
 			try
 			{
-				db.deleteArticle(title);
+				db.deleteArticle(aid);
 			}
 			
 			catch(SQLException e)

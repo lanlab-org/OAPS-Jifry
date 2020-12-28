@@ -4,4 +4,12 @@ The things I have done (What I still remember):
 2、The administrator can edit and add subject; 
 3、The problem of Chinese garbled code is solved; 
 4、The type and size of uploaded files are limited；
-5、Fixed some bugs in the original project;
+5、Statistics of article visits;
+6、The time format, background color,and spaces are compatible in the search box, 
+7、Add the author's name when publishing the article, 
+8、Change the title of the page header to the specific article name  when clicking the specific article page,
+9、If the comment is too long, only the previous part will be displayed.
+10、Add  function of showing two articles with the most likes according to the ideas provided by other groups.
+11、Add  Verification Code according to the ideas provided by other groups.
+12、Change Title uniqueness to Article ID uniqueness.
+

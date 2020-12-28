@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>     
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <!DOCTYPE html>
 <html>
@@ -55,14 +55,14 @@ header nav
 
 .div1 .td1
 {
-	color:black;
+	color:dodgerblue;
 	font-weight:bold;
 	font-size:20px;
 }
 
 .div1 .td2
 {
-	color:black;
+	color:dodgerblue;
 	padding-bottom:20px;
 }
 
@@ -95,7 +95,7 @@ footer
 </nav>
 </header>
 
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
 select * from article a , subject s where a.sid=s.sid  and title="${ title}";
@@ -115,7 +115,7 @@ select * from article a , subject s where a.sid=s.sid  and title="${ title}";
 <tr><td class="td2"><c:out value="${ row.highlight}"></c:out></td></tr>
 
 <tr><td class="td1">Publication Date</td></tr>
-<tr><td class="td2"><c:out value="${ row.time}"></c:out></td></tr>
+<tr><td class="td2"><fmt:formatDate value="${row.time}" pattern="yyyy-MM-dd HH:mm:ss" /></td></tr>
 
 </c:forEach>
 
