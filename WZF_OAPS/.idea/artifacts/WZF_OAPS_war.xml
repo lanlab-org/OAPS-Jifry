@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WZF_OAPS:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>WZF_OAPS</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="WZF_OAPS.war">
+      <element id="artifact" artifact-name="WZF_OAPS:war exploded" />
+    </root>
+  </artifact>
+</component>
