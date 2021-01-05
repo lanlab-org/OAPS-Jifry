@@ -186,7 +186,7 @@ footer
 <sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
-select * from article a , subject s where a.sid=s.sid  and subject='<%=request.getAttribute("subject") %>' and hide="No"
+select * from article a , subject s where a.sid=s.sid  and subject='<%=request.getAttribute("subject") %>' and hide="No" order by time desc
 </sql:query>
 
 <div>
