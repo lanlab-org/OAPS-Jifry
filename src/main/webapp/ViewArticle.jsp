@@ -250,7 +250,7 @@
 
     <c:set var="y" value="${ y+1}"></c:set>
 </c:forEach>
-<center><h3><c:out value="${msg}"> </c:out></h3></center>
+<center><h1><c:out value="${msg}"> </c:out></h1></center>
 <div class="div1">
     <table>
 
@@ -313,7 +313,7 @@
                         <button class="dislike"><i class="fa fa-thumbs-o-down"></i></button>
                         <c:out value="${y}"></c:out>
                     </form>
-                    <a class="download" href="DownloadServlet?fileName=${ row.filename}">Download</a>
+                    <a class="download" href="DownloadServlet?fileName=${ row.filename}&path=${row.path}">Download</a>
                 <td>
             </tr>
 

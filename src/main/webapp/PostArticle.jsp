@@ -69,6 +69,9 @@
         table {
             margin: 20px;
         }
+        .redFont {
+            color: red;
+        }
 
         .form1 input {
             width: 160%;
@@ -116,7 +119,7 @@
 <form class="form1" action="UploadServlet" method="post" enctype="multipart/form-data">
     <table>
         <tr>
-            <td style="text-align: center;"><h3>${suggestion}</h3></td>
+            <td style="text-align: center;"><h1 class="redFont">${suggestion}</h1></td>
         </tr>
         <tr>
             <td>Current Subject</td>
@@ -173,6 +176,7 @@
                 <button>Post</button>
             </td>
         </tr>
+        <tr><td><input type="text" name="psid" hidden value="${psid}"></td></tr>
 
     </table>
 </form>

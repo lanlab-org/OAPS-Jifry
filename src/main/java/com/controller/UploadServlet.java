@@ -53,10 +53,13 @@ public class UploadServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String path="";
         Part filePart = request.getPart("file");
         response.setContentType("text/plain;charset=UTF-8");
         String author = request.getParameter("author");
         String subject = request.getParameter("subject");
+        String psid = request.getParameter("psid");
+        request.setAttribute("psid",psid);
         String title = request.getParameter("title");
         String highlights = request.getParameter("highlights");
         String abstracts = request.getParameter("abstracts");
@@ -101,12 +104,12 @@ public class UploadServlet extends HttpServlet {
                     session = request.getSession(false);
 
                     String folderName = "resources";
-                    String uploadPath = request.getServletContext().getRealPath("") + folderName;
+                    String uploadPath = request.getServletContext().getRealPath("") + folderName+File.separator+ psid + File.separator + subject.trim()+ File.separator+title.trim();
 
                     File dir = new File(uploadPath);
-
+                    System.out.println("file:"+uploadPath );
                     if (!dir.exists()) {
-                        dir.mkdir();
+                        dir.mkdirs();
                     }
 
                     Timestamp time = new Timestamp(System.currentTimeMillis());
@@ -116,7 +119,7 @@ public class UploadServlet extends HttpServlet {
 
                     String cd = filePart.getHeader("Content-Disposition");
                     String fileName = cd.substring(cd.lastIndexOf("=") + 2, cd.length() - 1);
-                    String path = folderName + File.separator + fileName;
+                    path = folderName + "/" + psid + "/" + subject.trim() + "/" +title.trim()+"/"+ fileName;
 
 
 
@@ -124,7 +127,7 @@ public class UploadServlet extends HttpServlet {
 
                         System.out.println(uploadPath + File.separator + fileName);
                         File file = new File(uploadPath + File.separator + fileName);
-                        System.out.println("文件大小："+file.length() / (1024.0 * 1024));
+                        System.out.println("文件大小：" + file.length() / (1024.0 * 1024));
                         if (file.length() / (1024.0 * 1024) > 20) {
                             request.setAttribute("suggestion", "文件大小不能超过20MB");
                             request.getRequestDispatcher("PostArticle.jsp").forward(request, response);
