@@ -149,7 +149,7 @@ select * from article a , subject s where a.sid=s.sid  and author = '${ author}'
 <th>Subject</th>
 <th>Title</th>
 <th>Time</th>
-<th>Popularity</th>
+<th>VisitNum</th>
 <th>DownLoad</th>
 </tr>
 <c:forEach items="${result.rows}" var="row">
@@ -167,7 +167,7 @@ select * from article a , subject s where a.sid=s.sid  and author = '${ author}'
         <c:set var="popularity" value="${ popularity+1}"></c:set>
     </c:forEach>
 <td><c:out value="${popularity}"></c:out></td>
-<td><a href="DownloadServlet?fileName=${ row.filename}">Download</a></td>
+<td><a href="DownloadServlet?fileName=${ row.filename}&path=${row.path}">Download</a></td>
 </tr>
 </c:forEach>
 </table>

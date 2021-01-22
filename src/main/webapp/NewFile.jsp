@@ -104,6 +104,9 @@ header input
 {
 	margin-bottom:20px;
 }
+tr td #redFont {
+    color: red;
+}
 
 div
 {	
@@ -175,7 +178,9 @@ footer
 <form action="Controller" method="post" class="form1">
 <input type="hidden" name="page" value="post-article">
 <input type="hidden" name="subject" value="${subject}">
+<input type="hidden" name="psid" value="${psid}">
 <table class="table1">
+    <tr><td><h1 id="redFont">${msg}</h1></td></tr>
 <tr><td><h1>You are in <c:out value="${subject}"></c:out></h1></td></tr>
 <tr><td><input type="email" name="email"  required placeholder="Enter your email"></td></tr>
     <tr><td><input type="text" name="authorName"  required placeholder="Enter your name"></td></tr>

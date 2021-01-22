@@ -109,6 +109,9 @@
             background-color: yellow;
             text-decoration: none;
         }
+        .seepop {
+            color: blue;
+        }
 
     </style>
 </head>
@@ -148,14 +151,16 @@
                     <tr>
                         <th>Most Popular Article</th>
                     </tr>
-                    <c:forEach items="${mostPopular.rows}" var="mos_popular">
+                    <c:forEach items="${mostTwoPop}" var="mos_popular">
                         <tr>
                             <td>
                                 <a class="pop_subitem" href="Controller?page=view-article&title=${mos_popular.title}&id=${mos_popular.aid}">
                                     <c:out value="${mos_popular.title}"></c:out></a></td>
                         </tr>
                     </c:forEach>
+
                 </table>
+                <div><a class="pop_subitem seepop" href="PopController"> To see all articles' popularity</a></div>
                 <c:forEach items="${subject.rows}" var="s_row">
                     <%--<sql:query var="article" dataSource="${ db}">--%>
                     <%--select * from article a , subject s where a.sid=s.sid  and subject="${s_row.subject}" and hide="No";--%>
@@ -167,7 +172,7 @@
 
                     <div class="list-group-item"><c:out value="${s_row.subject}"></c:out></div>
                     <c:forEach items="${ sub_subject.rows}" var="row">
-                        <a class="subitem" href="Controller?page=subject&id=${ row.subject}"><c:out
+                        <a class="subitem" href="Controller?page=subject&id=${ row.subject}&psid=${row.parentsid}"><c:out
                                 value="${ row.subject}"></c:out></a><br>
                         <sql:query var="article" dataSource="${ db}">
                             select * from article a , subject s where a.sid=s.sid and subject="${row.subject}" and hide="No";

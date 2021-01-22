@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : ZXY
-Source Server Version : 50649
-Source Host           : 47.115.56.157:3306
+Source Server         : 121.4.94.30
+Source Server Version : 50650
+Source Host           : 121.4.94.30:3306
 Source Database       : oo
 
 Target Server Type    : MYSQL
-Target Server Version : 50649
+Target Server Version : 50650
 File Encoding         : 65001
 
-Date: 2020-12-27 00:18:49
+Date: 2021-01-23 01:01:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,27 +50,33 @@ CREATE TABLE `article` (
   `ip` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
   `authorName` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`aid`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES ('8', '8', '量子力学！', '量子力学和经典力学！', '物理学细小分支！', '455@51', '2020-11-15 16:38:57', 'kong.pdf', 'resources/kong.pdf', 'No', '47.115.56.157', '吴钟富');
-INSERT INTO `article` VALUES ('10', '15', 'Naive Bayes ', 'A practical guide with a great example on how to classify Sports and Non-sports', 'Naive Bayes is a family of probabilistic algorithms that take advantage of probability theory and Bayes’ Theorem to predict the tag of a text (like a piece of news or a customer review). They are probabilistic, which means that they calculate the probability of each tag for a given text, and then output the tag with the highest one. The way they get these probabilities is by using Bayes’ Theorem, which describes the probability of a feature, based on prior knowledge of conditions that might be related to that feature.', '1348141770@qq.com', '2020-12-02 09:59:52', 'A practical explanation of a Naive Bayes classifier.pdf', 'resources/A practical explanation of a Naive Bayes classifier.pdf', 'No', '47.115.56', 'Mr.Lan');
-INSERT INTO `article` VALUES ('11', '10', '保护环境', '人与自然', '环境科学', '455@51', '2020-12-02 22:34:50', 'kong.pdf', 'resources\\kong.pdf', 'No', '47.115.56', '吴钟富');
-INSERT INTO `article` VALUES ('12', '14', '基因工程', '转基因技术', '基因学', '455@51', '2020-12-02 22:43:48', 'kong.pdf', 'resources\\kong.pdf', 'No', '47.115.56', '吴钟富');
-INSERT INTO `article` VALUES ('13', '13', '细胞', '细胞的构造', '细胞生物学', '455@51', '2020-12-02 22:52:23', 'kong.pdf', 'resources\\kong.pdf', 'No', '47.115.56', '吴钟富');
-INSERT INTO `article` VALUES ('14', '9', '毒气', '731部队', '化学', '455@51', '2020-12-03 01:12:06', 'kong.pdf', 'resources\\kong.pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
-INSERT INTO `article` VALUES ('15', '8', '经典力学', '牛顿定律', '经典力学', '455@51', '2020-12-03 01:25:43', 'kong.pdf', 'resources/kong.pdf', 'Yes', '124.160.213.56', '吴钟富');
-INSERT INTO `article` VALUES ('16', '15', 'Naive Bayes for Machine Learning', 'Naive Bayes is a simple but surprisingly powerful algorithm for predictive modeling.', 'Naive Bayes is a classification algorithm for binary (two-class) and multi-class classification problems. The technique is easiest to understand when described using binary or categorical input values.', 'lanhui@zjnu.edu.cn', '2020-12-07 16:07:11', 'nb.pdf', 'resources/nb.pdf', 'No', '124.160.213.41', '吴钟富, lanhui');
-INSERT INTO `article` VALUES ('18', '14', '转基因技术', '转基因技术原理', '生物工程学', '455@51', '2020-12-14 09:35:08', 'kong.pdf', 'resources/kong.pdf', 'No', '223.95.63.179', '吴钟富');
-INSERT INTO `article` VALUES ('20', '9', '生化', '生物化学，顾名思义是研究生物体中的化学进程的一门学科，常常被简称为生化。', '它主要用于研究细胞内各组分，如蛋白质、糖类、脂类、核酸等生物大分子的结构和功能。而对于化学生物学来说，则着重于利用化学合成中的方法来解答生物化学所发现的相关问题', '455@51', '2020-12-15 18:46:38', 'kong.pdf', 'resources\\kong.pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
-INSERT INTO `article` VALUES ('23', '10', 'biological environments.', 'It encompasses environmental chemistry, soil science, ecology, climatology, ', 'biological environments.', '455@51', '2020-12-23 14:47:22', 'kong.pdf', 'resources/kong.pdf', 'No', '223.95.63.177', '吴钟富');
-INSERT INTO `article` VALUES ('24', '13', '细胞器', '细胞器是细胞质中具有特定形态结构和功能的微器官', '细胞器（organelle）一般认为是散布在细胞质内具有一定形态和功能的微结构或微器官。但对于“细胞器”这一名词的范围，还存在着某些不同意见', '455@51', '2020-12-23 14:52:56', 'nb.pdf', 'resources/nb.pdf', 'No', '223.95.63.177', '吴钟富');
-INSERT INTO `article` VALUES ('25', '13', '细胞核', '细胞核(nucleus)是真核细胞内最大、最重要的细胞结构', '它主要由核膜（nuclear membrane）、染色质（chromatin）、核仁(nucleolus)、核基质（nuclear matrix） 等组成。', '455@51', '2020-12-23 14:54:49', 'A practical explanation of a Naive Bayes classifier.pdf', 'resources/A practical explanation of a Naive Bayes classifier.pdf', 'No', '223.95.63.177', '吴钟富');
-INSERT INTO `article` VALUES ('26', '8', '牛顿运动定律', '理想实验法', '经典力学', '455@51', '2020-12-23 15:34:04', 'nb.pdf', 'resources/nb.pdf', 'No', '47.115.56.157', '吴钟富');
-INSERT INTO `article` VALUES ('27', '8', '杠杆原理', '以柔克刚！', '一根杠杆能撬动地球！', '455@51', '2020-12-24 18:03:13', 'nb.pdf', 'resources/nb.pdf', 'No', '47.115.56.157', '吴钟富');
-INSERT INTO `article` VALUES ('32', '8', 'AAA', 'dsad', '发多少', '455@51', '2020-12-24 20:30:33', 'kong.pdf', 'resources/kong.pdf', 'No', '223.95.63.120', '吴钟富');
+INSERT INTO `article` VALUES ('8', '8', '量子力学！', '量子力学和经典力学！', '物理学细小分支！', '455@51', '2020-11-15 16:38:57', 'kong.pdf', 'resources/1/Physics/量子力学！/kong.pdf', 'No', '47.115.56.157', '吴钟富');
+INSERT INTO `article` VALUES ('10', '15', 'Naive Bayes ', 'A practical guide with a great example on how to classify Sports and Non-sports', 'Naive Bayes is a family of probabilistic algorithms that take advantage of probability theory and Bayes’ Theorem to predict the tag of a text (like a piece of news or a customer review). They are probabilistic, which means that they calculate the probability of each tag for a given text, and then output the tag with the highest one. The way they get these probabilities is by using Bayes’ Theorem, which describes the probability of a feature, based on prior knowledge of conditions that might be related to that feature.', '1348141770@qq.com', '2020-12-02 09:59:52', 'A practical explanation of a Naive Bayes classifier.pdf', 'resources/4/Machine Learning/Naive Bayes /A practical explanation of a Naive Bayes classifier.pdf', 'No', '47.115.56', 'Mr.Lan');
+INSERT INTO `article` VALUES ('11', '10', '保护环境', '人与自然', '环境科学', '455@51', '2020-12-02 22:34:50', 'kong.pdf', 'resources/1/Environmental Sciences/保护环境/kong.pdf', 'No', '47.115.56', '吴钟富');
+INSERT INTO `article` VALUES ('12', '14', '基因工程', '转基因技术', '基因学', '455@51', '2020-12-02 22:43:48', 'kong.pdf', 'resources/3/Genetics/基因工程/kong.pdf', 'No', '47.115.56', '吴钟富');
+INSERT INTO `article` VALUES ('13', '13', '细胞', '细胞的构造', '细胞生物学', '455@51', '2020-12-02 22:52:23', 'kong.pdf', 'resources/3/Cell Biology/细胞/kong.pdf', 'No', '47.115.56', '吴钟富');
+INSERT INTO `article` VALUES ('14', '9', '毒气', '731部队', '化学', '455@51', '2020-12-03 01:12:06', 'kong.pdf', 'resources/1/Chemistry/毒气/kong.pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
+INSERT INTO `article` VALUES ('15', '8', '经典力学', '牛顿定律', '经典力学', '455@51', '2020-12-03 01:25:43', 'kong.pdf', 'resources/1/Physics/经典力学/kong.pdf', 'Yes', '124.160.213.56', '吴钟富');
+INSERT INTO `article` VALUES ('16', '15', 'Naive Bayes for Machine Learning', 'Naive Bayes is a simple but surprisingly powerful algorithm for predictive modeling.', 'Naive Bayes is a classification algorithm for binary (two-class) and multi-class classification problems. The technique is easiest to understand when described using binary or categorical input values.', 'lanhui@zjnu.edu.cn', '2020-12-07 16:07:11', 'nb.pdf', 'resources/4/Machine Learning/Naive Bayes for Machine Learning/nb.pdf', 'No', '124.160.213.41', '吴钟富, lanhui');
+INSERT INTO `article` VALUES ('18', '14', '转基因技术', '转基因技术原理', '生物工程学', '455@51', '2020-12-14 09:35:08', 'kong.pdf', 'resources/3/Genetics/转基因技术/kong.pdf', 'No', '223.95.63.179', '吴钟富');
+INSERT INTO `article` VALUES ('20', '9', '生化', '生物化学，顾名思义是研究生物体中的化学进程的一门学科，常常被简称为生化。', '它主要用于研究细胞内各组分，如蛋白质、糖类、脂类、核酸等生物大分子的结构和功能。而对于化学生物学来说，则着重于利用化学合成中的方法来解答生物化学所发现的相关问题', '455@51', '2020-12-15 18:46:38', 'kong.pdf', 'resources/1/Chemistry/生化/kong.pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
+INSERT INTO `article` VALUES ('23', '10', 'biological environments.', 'It encompasses environmental chemistry, soil science, ecology, climatology, ', 'biological environments.', '455@51', '2020-12-23 14:47:22', 'kong.pdf', 'resources/1/Environmental Sciences/biological environments./kong.pdf', 'No', '223.95.63.177', '吴钟富');
+INSERT INTO `article` VALUES ('24', '13', '细胞器', '细胞器是细胞质中具有特定形态结构和功能的微器官', '细胞器（organelle）一般认为是散布在细胞质内具有一定形态和功能的微结构或微器官。但对于“细胞器”这一名词的范围，还存在着某些不同意见', '455@51', '2020-12-23 14:52:56', 'nb.pdf', 'resources/3/Cell Biology/细胞器/nb.pdf', 'No', '223.95.63.177', '吴钟富');
+INSERT INTO `article` VALUES ('25', '13', '细胞核', '细胞核(nucleus)是真核细胞内最大、最重要的细胞结构', '它主要由核膜（nuclear membrane）、染色质（chromatin）、核仁(nucleolus)、核基质（nuclear matrix） 等组成。', '455@51', '2020-12-23 14:54:49', 'A practical explanation of a Naive Bayes classifier.pdf', 'resources/3/Cell Biology/细胞核/A practical explanation of a Naive Bayes classifier.pdf', 'No', '223.95.63.177', '吴钟富');
+INSERT INTO `article` VALUES ('26', '8', '牛顿运动定律', '理想实验法', '经典力学', '455@51', '2020-12-23 15:34:04', 'nb.pdf', 'resources/1/Physics/牛顿运动定律/nb.pdf', 'No', '47.115.56.157', '吴钟富');
+INSERT INTO `article` VALUES ('27', '8', '杠杆原理', '以柔克刚！', '一根杠杆能撬动地球！', '455@51', '2020-12-24 18:03:13', 'nb.pdf', 'resources/1/Physics/杠杆原理/nb.pdf', 'No', '47.115.56.157', '吴钟富');
+INSERT INTO `article` VALUES ('64', '15', 'DSADASD', 'DAFSDF', 'FDSF', '455@51', '2021-01-22 00:49:21', '2020年下半年英语六级笔试准考证(吴钟富).pdf', 'resources/4/Machine Learning/DSADASD/2020年下半年英语六级笔试准考证(吴钟富).pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
+INSERT INTO `article` VALUES ('65', '11', 'vdcgsdfg', 'fdsfdsf', '发多少方式的', '455@51', '2021-01-22 00:57:03', '2020年下半年英语六级笔试准考证(吴钟富).pdf', 'resources/2/Anthropology/vdcgsdfg/2020年下半年英语六级笔试准考证(吴钟富).pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
+INSERT INTO `article` VALUES ('66', '8', '佛挡杀佛第三方', '防守打法', '发多少', '455@51', '2021-01-22 01:47:31', '2020年下半年英语六级笔试准考证(吴钟富).pdf', 'resources/1/Physics/佛挡杀佛第三方/2020年下半年英语六级笔试准考证(吴钟富).pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
+INSERT INTO `article` VALUES ('67', '11', 'ADD', 'DS', 'DS', '455@51', '2021-01-22 01:55:22', '2020年下半年英语六级笔试准考证(吴钟富).pdf', 'resources/2/Anthropology/ADD/2020年下半年英语六级笔试准考证(吴钟富).pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
+INSERT INTO `article` VALUES ('68', '11', 'DSADFDSF', 'FSDFFGFG', 'GFDGDFG', '455@51', '2021-01-22 01:56:18', '2020年下半年英语六级笔试准考证(吴钟富).pdf', 'resources/2/Anthropology/DSADFDSF/2020年下半年英语六级笔试准考证(吴钟富).pdf', 'No', '0:0:0:0:0:0:0:1', '吴钟富');
+INSERT INTO `article` VALUES ('69', '8', '大萨达', '答', '大萨达', '455@51', '2021-01-22 02:18:08', '2020年下半年英语六级笔试准考证(吴钟富).pdf', 'resources/1/Physics/大萨达/2020年下半年英语六级笔试准考证(吴钟富).pdf', 'No', '111.29.153.5', '吴钟富');
+INSERT INTO `article` VALUES ('70', '11', 'DSADADD', 'DSAD', 'dsadasd', '455@51', '2021-01-22 02:19:07', '2020年下半年英语六级笔试准考证(吴钟富).pdf', 'resources/2/Anthropology/DSADADD/2020年下半年英语六级笔试准考证(吴钟富).pdf', 'No', '111.29.153.5', '吴钟富');
 
 -- ----------------------------
 -- Table structure for author
@@ -92,7 +98,7 @@ DROP TABLE IF EXISTS `block_author`;
 CREATE TABLE `block_author` (
   `id` int(11) NOT NULL,
   `email` varchar(20) NOT NULL,
-  `ip` varchar(30) CHARACTER SET utf8 COLLATE utf8_german2_ci DEFAULT NULL,
+  `ip` varchar(30) DEFAULT NULL,
   `blockuntil` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -116,7 +122,7 @@ CREATE TABLE `comments` (
   `ip` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
   `aid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of comments
@@ -146,245 +152,8 @@ INSERT INTO `comments` VALUES ('85', '基因工程', 'Great!', '2020-12-15 18:02
 INSERT INTO `comments` VALUES ('86', 'Naive Bayes for Machine Learning', 'test comment.', '2020-12-15 18:02:50', '', null, null, '16');
 INSERT INTO `comments` VALUES ('87', 'Naive Bayes for Machine Learning', 'This is a nice essay. -Hui', '2020-12-15 18:02:50', '', null, null, '16');
 INSERT INTO `comments` VALUES ('88', 'Naive Bayes for Machine Learning', 'Greeting from Advanced Software Engineering class. -Hui', '2020-12-15 18:02:50', '', null, null, '16');
-INSERT INTO `comments` VALUES ('89', '量子力学！', '66666666', '2020-12-21 12:22:10', '', null, null, null);
-INSERT INTO `comments` VALUES ('90', '量子力学！', '666666', '2020-12-23 15:41:16', '', null, null, null);
-INSERT INTO `comments` VALUES ('91', '杠杆原理', '666666666666666', '2020-12-24 18:03:29', '', null, null, null);
-INSERT INTO `comments` VALUES ('92', '牛顿运动定律', 'HHH', '2020-12-24 20:44:33', '', null, null, null);
-INSERT INTO `comments` VALUES ('93', '牛顿运动定律', '苹果为什么不往上面掉？', '2020-12-26 14:24:13', '', null, null, null);
-
--- ----------------------------
--- Table structure for love_article
--- ----------------------------
-DROP TABLE IF EXISTS `love_article`;
-CREATE TABLE `love_article` (
-  `ip` varchar(20) DEFAULT NULL,
-  `title` varchar(500) DEFAULT NULL,
-  `prefer` int(11) DEFAULT NULL,
-  `aid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of love_article
--- ----------------------------
-INSERT INTO `love_article` VALUES ('101.66.173.188', '量子力学！', '1', '8');
-INSERT INTO `love_article` VALUES ('113.214.196.48', 'Naive Bayes', '1', '10');
-INSERT INTO `love_article` VALUES ('113.214.196.48', '量子力学！', '1', '8');
-INSERT INTO `love_article` VALUES ('123.157.19.26', 'Naive Bayes', '1', '10');
-INSERT INTO `love_article` VALUES ('223.95.63.179', '量子力学！', '0', '8');
-INSERT INTO `love_article` VALUES ('223.95.63.179', '保护环境', '1', '11');
-INSERT INTO `love_article` VALUES ('223.95.63.179', 'Naive Bayes for Machine Learning', '0', '16');
-INSERT INTO `love_article` VALUES ('123.157.19.30', '量子力学！', '1', '8');
-INSERT INTO `love_article` VALUES ('123.157.19.30', '基因工程', '1', '12');
-INSERT INTO `love_article` VALUES ('112.17.240.173', '基因工程', '1', '12');
-INSERT INTO `love_article` VALUES ('0:0:0:0:0:0:0:1', '毒气', '1', '14');
-INSERT INTO `love_article` VALUES ('223.95.63.198', '量子力学！', '0', '8');
-INSERT INTO `love_article` VALUES ('0:0:0:0:0:0:0:1', 'Naive Bayes', '1', '10');
-INSERT INTO `love_article` VALUES ('113.214.196.105', 'Naive Bayes for Machine Learning', '1', '16');
-INSERT INTO `love_article` VALUES ('112.17.241.152', '量子力学！', '1', null);
-INSERT INTO `love_article` VALUES ('112.17.241.152', 'Naive Bayes', '0', null);
-INSERT INTO `love_article` VALUES ('223.95.63.120', '杠杆原理', '1', null);
-INSERT INTO `love_article` VALUES ('223.95.63.120', '牛顿运动定律', '1', null);
-INSERT INTO `love_article` VALUES ('113.214.196.25', 'Naive Bayes for Machine Learning', '1', null);
-
--- ----------------------------
--- Table structure for love_comment
--- ----------------------------
-DROP TABLE IF EXISTS `love_comment`;
-CREATE TABLE `love_comment` (
-  `ip` varchar(20) DEFAULT NULL,
-  `cid` int(11) NOT NULL,
-  `prefer` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of love_comment
--- ----------------------------
-INSERT INTO `love_comment` VALUES ('223.95.63.233', '40', '1');
-INSERT INTO `love_comment` VALUES ('223.95.63.233', '41', '0');
-INSERT INTO `love_comment` VALUES ('113.214.196.48', '42', '1');
-INSERT INTO `love_comment` VALUES ('123.157.19.26', '43', '0');
-INSERT INTO `love_comment` VALUES ('0:0:0:0:0:0:0:1', '56', '1');
-INSERT INTO `love_comment` VALUES ('60.12.158.35', '45', '1');
-INSERT INTO `love_comment` VALUES ('60.12.158.35', '44', '1');
-INSERT INTO `love_comment` VALUES ('123.157.19.20', '72', '1');
-INSERT INTO `love_comment` VALUES ('223.95.63.179', '84', '0');
-INSERT INTO `love_comment` VALUES ('223.95.63.179', '82', '1');
-INSERT INTO `love_comment` VALUES ('123.157.19.30', '62', '1');
-INSERT INTO `love_comment` VALUES ('123.157.19.30', '63', '0');
-INSERT INTO `love_comment` VALUES ('119.4.175.54', '52', '1');
-INSERT INTO `love_comment` VALUES ('223.95.63.198', '89', '1');
-INSERT INTO `love_comment` VALUES ('223.95.63.198', '80', '1');
-INSERT INTO `love_comment` VALUES ('223.95.63.120', '91', '0');
-INSERT INTO `love_comment` VALUES ('223.95.63.120', '92', '0');
-
--- ----------------------------
--- Table structure for subject
--- ----------------------------
-DROP TABLE IF EXISTS `subject`;
-CREATE TABLE `subject` (
-  `sid` int(11) NOT NULL AUTO_INCREMENT,
-  `subject` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  `sdate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `parentsid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`sid`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of subject
--- ----------------------------
-INSERT INTO `subject` VALUES ('1', 'Physical Sciences', '2020-11-15 14:36:31', '0');
-INSERT INTO `subject` VALUES ('2', 'Social Sciences', '2020-11-15 14:36:45', '0');
-INSERT INTO `subject` VALUES ('3', 'Biological Sciences', '2020-11-15 14:36:58', '0');
-INSERT INTO `subject` VALUES ('4', 'Computer Sciences', '2020-11-15 14:37:12', '0');
-INSERT INTO `subject` VALUES ('5', 'Statistics', '2020-11-15 14:37:24', '0');
-INSERT INTO `subject` VALUES ('6', 'Mathematics', '2020-11-15 14:37:36', '0');
-INSERT INTO `subject` VALUES ('7', 'Medical Sciences', '2020-11-15 14:37:48', '0');
-INSERT INTO `subject` VALUES ('8', 'Physics', '2020-11-15 14:38:01', '1');
-INSERT INTO `subject` VALUES ('9', ' Chemistry', '2020-11-15 14:38:14', '1');
-INSERT INTO `subject` VALUES ('10', ' Environmental Sciences', '2020-11-15 14:38:34', '1');
-INSERT INTO `subject` VALUES ('11', ' Anthropology', '2020-11-15 14:38:46', '2');
-INSERT INTO `subject` VALUES ('12', 'Sustainability Science ', '2020-11-15 14:39:00', '2');
-INSERT INTO `subject` VALUES ('13', 'Cell Biology', '2020-11-15 14:39:20', '3');
-INSERT INTO `subject` VALUES ('14', ' Genetics', '2020-11-15 14:39:35', '3');
-INSERT INTO `subject` VALUES ('15', 'Machine Learning', '2020-11-15 14:39:55', '4');
-
--- ----------------------------
--- Table structure for visit
--- ----------------------------
-DROP TABLE IF EXISTS `visit`;
-CREATE TABLE `visit` (
-  `vid` int(11) NOT NULL AUTO_INCREMENT,
-  `aid` int(11) DEFAULT NULL,
-  `ip` varchar(30) DEFAULT NULL,
-  `vdate` datetime DEFAULT NULL,
-  PRIMARY KEY (`vid`)
-) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of visit
--- ----------------------------
-INSERT INTO `visit` VALUES ('10', '10', '124.160.213.56', '2020-12-03 01:22:00');
-INSERT INTO `visit` VALUES ('11', '8', '124.160.213.56', '2020-12-03 01:23:43');
-INSERT INTO `visit` VALUES ('12', '8', '115.212.61.105', '2020-12-03 11:09:28');
-INSERT INTO `visit` VALUES ('13', '10', '115.212.61.105', '2020-12-03 11:10:34');
-INSERT INTO `visit` VALUES ('15', '11', '124.160.213.41', '2020-12-07 15:57:14');
-INSERT INTO `visit` VALUES ('16', '10', '124.160.213.41', '2020-12-07 15:58:14');
-INSERT INTO `visit` VALUES ('18', '8', '124.160.213.41', '2020-12-07 16:04:34');
-INSERT INTO `visit` VALUES ('19', '16', '124.160.213.41', '2020-12-07 16:07:19');
-INSERT INTO `visit` VALUES ('21', '16', '223.104.246.116', '2020-12-07 17:01:15');
-INSERT INTO `visit` VALUES ('22', '16', '60.12.158.57', '2020-12-07 17:14:46');
-INSERT INTO `visit` VALUES ('23', '15', '60.12.158.57', '2020-12-07 17:18:37');
-INSERT INTO `visit` VALUES ('24', '11', '60.12.158.57', '2020-12-07 17:19:05');
-INSERT INTO `visit` VALUES ('27', '8', '113.214.196.97', '2020-12-07 22:38:44');
-INSERT INTO `visit` VALUES ('28', '16', '113.214.196.97', '2020-12-08 08:43:50');
-INSERT INTO `visit` VALUES ('29', '10', '123.157.19.38', '2020-12-08 11:35:53');
-INSERT INTO `visit` VALUES ('30', '16', '123.157.19.38', '2020-12-08 11:37:44');
-INSERT INTO `visit` VALUES ('31', '8', '60.12.158.35', '2020-12-08 13:59:34');
-INSERT INTO `visit` VALUES ('32', '16', '60.12.158.35', '2020-12-08 14:00:18');
-INSERT INTO `visit` VALUES ('33', '16', '123.157.19.30', '2020-12-08 14:56:07');
-INSERT INTO `visit` VALUES ('34', '10', '123.157.19.30', '2020-12-08 14:56:23');
-INSERT INTO `visit` VALUES ('35', '10', '113.214.196.97', '2020-12-08 21:49:52');
-INSERT INTO `visit` VALUES ('36', '16', '123.157.19.26', '2020-12-09 10:56:44');
-INSERT INTO `visit` VALUES ('37', '10', '123.157.19.20', '2020-12-10 14:03:51');
-INSERT INTO `visit` VALUES ('38', '17', '123.157.19.20', '2020-12-10 14:04:15');
-INSERT INTO `visit` VALUES ('39', '8', '123.157.19.20', '2020-12-10 14:40:13');
-INSERT INTO `visit` VALUES ('40', '14', '8.210.250.75', '2020-12-12 10:21:35');
-INSERT INTO `visit` VALUES ('41', '17', '8.210.250.75', '2020-12-12 10:21:51');
-INSERT INTO `visit` VALUES ('42', '11', '8.210.250.75', '2020-12-12 10:22:53');
-INSERT INTO `visit` VALUES ('43', '17', '124.160.213.155', '2020-12-13 12:33:17');
-INSERT INTO `visit` VALUES ('44', '16', '124.160.213.155', '2020-12-13 12:35:20');
-INSERT INTO `visit` VALUES ('45', '11', '223.95.63.29', '2020-12-13 16:53:05');
-INSERT INTO `visit` VALUES ('46', '16', '223.95.63.29', '2020-12-13 16:55:45');
-INSERT INTO `visit` VALUES ('47', '14', '223.95.63.29', '2020-12-13 17:00:28');
-INSERT INTO `visit` VALUES ('48', '8', '223.95.63.29', '2020-12-13 17:34:21');
-INSERT INTO `visit` VALUES ('49', '8', '124.160.213.155', '2020-12-13 17:44:56');
-INSERT INTO `visit` VALUES ('50', '8', '223.95.63.179', '2020-12-14 09:32:26');
-INSERT INTO `visit` VALUES ('51', '18', '223.95.63.179', '2020-12-14 09:35:12');
-INSERT INTO `visit` VALUES ('52', '11', '223.95.63.179', '2020-12-14 09:35:30');
-INSERT INTO `visit` VALUES ('53', '16', '223.95.63.179', '2020-12-14 09:37:37');
-INSERT INTO `visit` VALUES ('54', '14', '223.95.63.179', '2020-12-14 09:39:53');
-INSERT INTO `visit` VALUES ('55', '10', '223.95.63.179', '2020-12-14 09:40:24');
-INSERT INTO `visit` VALUES ('58', '17', '123.157.19.30', '2020-12-14 14:58:54');
-INSERT INTO `visit` VALUES ('59', '8', '123.157.19.30', '2020-12-14 15:01:10');
-INSERT INTO `visit` VALUES ('60', '8', '112.17.240.173', '2020-12-14 15:03:46');
-INSERT INTO `visit` VALUES ('62', '17', '112.17.240.173', '2020-12-14 15:05:53');
-INSERT INTO `visit` VALUES ('63', '8', '123.157.19.34', '2020-12-14 16:53:06');
-INSERT INTO `visit` VALUES ('64', '12', '112.17.240.173', '2020-12-14 17:00:32');
-INSERT INTO `visit` VALUES ('65', '14', '112.17.240.173', '2020-12-14 17:02:32');
-INSERT INTO `visit` VALUES ('66', '12', '123.157.19.34', '2020-12-14 17:05:29');
-INSERT INTO `visit` VALUES ('67', '18', '123.157.19.34', '2020-12-14 17:05:46');
-INSERT INTO `visit` VALUES ('68', '13', '123.157.19.34', '2020-12-14 17:05:59');
-INSERT INTO `visit` VALUES ('69', '10', '123.157.19.34', '2020-12-14 17:07:20');
-INSERT INTO `visit` VALUES ('70', '12', '123.157.19.30', '2020-12-14 17:08:39');
-INSERT INTO `visit` VALUES ('71', '12', '223.104.246.56', '2020-12-14 17:10:58');
-INSERT INTO `visit` VALUES ('72', '12', '123.157.19.21', '2020-12-14 17:12:51');
-INSERT INTO `visit` VALUES ('74', '12', '124.160.216.248', '2020-12-14 17:55:47');
-INSERT INTO `visit` VALUES ('83', '8', '119.4.175.54', '2020-12-16 17:48:40');
-INSERT INTO `visit` VALUES ('84', '8', '61.151.178.177', '2020-12-16 18:00:48');
-INSERT INTO `visit` VALUES ('85', '16', '113.214.196.18', '2020-12-18 10:33:07');
-INSERT INTO `visit` VALUES ('86', '8', '113.214.196.18', '2020-12-18 10:37:26');
-INSERT INTO `visit` VALUES ('87', '18', '113.214.196.18', '2020-12-18 10:37:56');
-INSERT INTO `visit` VALUES ('88', '20', '113.214.196.18', '2020-12-18 10:38:05');
-INSERT INTO `visit` VALUES ('89', '-1', '113.214.196.18', '2020-12-18 10:38:32');
-INSERT INTO `visit` VALUES ('90', '19', '113.214.196.18', '2020-12-18 10:38:45');
-INSERT INTO `visit` VALUES ('91', '8', '223.95.63.198', '2020-12-21 10:28:18');
-INSERT INTO `visit` VALUES ('92', '20', '223.95.63.198', '2020-12-21 12:01:55');
-INSERT INTO `visit` VALUES ('93', '21', '223.95.63.198', '2020-12-21 12:12:15');
-INSERT INTO `visit` VALUES ('94', '22', '223.95.63.198', '2020-12-21 12:24:32');
-INSERT INTO `visit` VALUES ('95', '16', '223.95.63.198', '2020-12-21 12:25:38');
-INSERT INTO `visit` VALUES ('96', '13', '223.95.63.198', '2020-12-21 12:25:52');
-INSERT INTO `visit` VALUES ('97', '14', '223.95.63.198', '2020-12-21 12:25:58');
-INSERT INTO `visit` VALUES ('98', '10', '223.95.63.198', '2020-12-21 12:28:29');
-INSERT INTO `visit` VALUES ('99', '8', '36.19.100.6', '2020-12-21 16:04:37');
-INSERT INTO `visit` VALUES ('100', '8', '123.157.19.38', '2020-12-21 16:17:25');
-INSERT INTO `visit` VALUES ('101', '16', '223.104.247.0', '2020-12-21 16:55:56');
-INSERT INTO `visit` VALUES ('102', '14', '113.214.196.105', '2020-12-21 20:20:56');
-INSERT INTO `visit` VALUES ('103', '8', '101.66.173.179', '2020-12-22 12:24:09');
-INSERT INTO `visit` VALUES ('104', '10', '124.160.214.3', '2020-12-22 15:23:36');
-INSERT INTO `visit` VALUES ('105', '10', '113.214.196.105', '2020-12-22 17:37:36');
-INSERT INTO `visit` VALUES ('106', '16', '113.214.196.105', '2020-12-22 17:37:57');
-INSERT INTO `visit` VALUES ('107', '16', '113.214.196.37', '2020-12-23 09:32:55');
-INSERT INTO `visit` VALUES ('108', '8', '123.157.19.26', '2020-12-23 10:47:52');
-INSERT INTO `visit` VALUES ('109', '10', '123.157.19.26', '2020-12-23 10:47:58');
-INSERT INTO `visit` VALUES ('110', '8', '223.95.63.177', '2020-12-23 14:42:30');
-INSERT INTO `visit` VALUES ('111', '23', '223.95.63.177', '2020-12-23 14:47:44');
-INSERT INTO `visit` VALUES ('112', '25', '223.95.63.177', '2020-12-23 14:54:53');
-INSERT INTO `visit` VALUES ('114', '10', '223.95.63.177', '2020-12-23 14:55:16');
-INSERT INTO `visit` VALUES ('115', '24', '223.95.63.177', '2020-12-23 15:00:05');
-INSERT INTO `visit` VALUES ('116', '26', '47.115.56.157', '2020-12-23 15:34:11');
-INSERT INTO `visit` VALUES ('117', '27', '47.115.56.157', '2020-12-23 15:37:30');
-INSERT INTO `visit` VALUES ('118', '8', '47.115.56.157', '2020-12-23 15:40:33');
-INSERT INTO `visit` VALUES ('119', '11', '47.115.56.157', '2020-12-23 15:41:00');
-INSERT INTO `visit` VALUES ('120', '26', '124.160.220.165', '2020-12-23 15:41:21');
-INSERT INTO `visit` VALUES ('121', '27', '124.160.220.165', '2020-12-23 15:41:25');
-INSERT INTO `visit` VALUES ('122', '27', '223.95.63.177', '2020-12-23 15:41:46');
-INSERT INTO `visit` VALUES ('123', '13', '47.115.56.157', '2020-12-23 15:41:50');
-INSERT INTO `visit` VALUES ('124', '28', '223.95.63.177', '2020-12-23 15:47:36');
-INSERT INTO `visit` VALUES ('125', '28', '47.115.56.157', '2020-12-23 15:48:40');
-INSERT INTO `visit` VALUES ('126', '29', '47.115.56.157', '2020-12-23 15:50:44');
-INSERT INTO `visit` VALUES ('127', '27', '61.129.8.179', '2020-12-23 15:50:54');
-INSERT INTO `visit` VALUES ('128', '30', '47.115.56.157', '2020-12-23 15:57:03');
-INSERT INTO `visit` VALUES ('129', '8', '0:0:0:0:0:0:0:1', '2020-12-23 22:34:15');
-INSERT INTO `visit` VALUES ('130', '10', '0:0:0:0:0:0:0:1', '2020-12-23 22:35:38');
-INSERT INTO `visit` VALUES ('131', '10', '112.17.241.152', '2020-12-23 22:50:37');
-INSERT INTO `visit` VALUES ('132', '8', '112.17.241.152', '2020-12-23 22:52:39');
-INSERT INTO `visit` VALUES ('133', '26', '112.17.241.152', '2020-12-23 22:53:12');
-INSERT INTO `visit` VALUES ('134', '8', '223.104.244.93', '2020-12-23 22:59:15');
-INSERT INTO `visit` VALUES ('135', '10', '101.91.60.104', '2020-12-23 22:59:36');
-INSERT INTO `visit` VALUES ('136', '14', '112.17.245.54', '2020-12-23 23:01:51');
-INSERT INTO `visit` VALUES ('137', '31', '223.95.63.120', '2020-12-24 18:02:39');
-INSERT INTO `visit` VALUES ('138', '27', '223.95.63.120', '2020-12-24 18:03:18');
-INSERT INTO `visit` VALUES ('139', '8', '223.95.63.120', '2020-12-24 19:57:53');
-INSERT INTO `visit` VALUES ('140', '32', '223.95.63.120', '2020-12-24 20:30:36');
-INSERT INTO `visit` VALUES ('141', '8', '124.160.215.208', '2020-12-24 20:34:14');
-INSERT INTO `visit` VALUES ('142', '26', '223.95.63.120', '2020-12-24 20:44:23');
-INSERT INTO `visit` VALUES ('143', '14', '60.12.158.47', '2020-12-25 08:14:43');
-INSERT INTO `visit` VALUES ('144', '10', '113.214.196.25', '2020-12-26 10:59:00');
-INSERT INTO `visit` VALUES ('145', '8', '113.214.196.25', '2020-12-26 10:59:05');
-INSERT INTO `visit` VALUES ('146', '27', '113.214.196.25', '2020-12-26 10:59:18');
-INSERT INTO `visit` VALUES ('147', '11', '113.214.196.25', '2020-12-26 11:00:17');
-INSERT INTO `visit` VALUES ('148', '16', '113.214.196.25', '2020-12-26 11:00:35');
-INSERT INTO `visit` VALUES ('149', '18', '113.214.196.25', '2020-12-26 11:00:49');
-INSERT INTO `visit` VALUES ('150', '24', '113.214.196.25', '2020-12-26 11:00:55');
-INSERT INTO `visit` VALUES ('151', '26', '113.214.196.25', '2020-12-26 11:01:45');
-INSERT INTO `visit` VALUES ('152', '32', '113.214.196.25', '2020-12-26 11:10:33');
+INSERT INTO `comments` VALUES ('94', '量子力学！', '6!', '2021-01-21 15:24:53', null, null, null, '8');
+INSERT INTO `comments` VALUES ('95', 'Naive Bayes ', '6啊', '2021-01-22 02:02:23', null, null, null, '10');
+INSERT INTO `comments` VALUES ('96', 'Naive Bayes for Machine Learning', '挺好', '2021-01-22 02:03:06', null, null, null, '16');
+INSERT INTO `comments` VALUES ('97', '保护环境', '好！', '2021-01-22 02:16:32', null, null, null, '11');
+INSERT INTO `comments` VALUES ('98', 'Naive Bayes for Machine Learning', 'hao ', '2021-01-23 00:45:15', null, null, null, '16');
