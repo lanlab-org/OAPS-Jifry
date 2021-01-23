@@ -151,7 +151,7 @@
                     <tr>
                         <th>Most Popular Article</th>
                     </tr>
-                    <c:forEach items="${mostPopular.rows}" var="mos_popular">
+                    <c:forEach items="${mostTwoPop}" var="mos_popular">
                         <tr>
                             <td>
                                 <a class="pop_subitem" href="Controller?page=view-article&title=${mos_popular.title}&id=${mos_popular.aid}">
@@ -160,7 +160,7 @@
                     </c:forEach>
 
                 </table>
-                <div><a class="pop_subitem seepop" href="likes.jsp"> To see popularity</a></div>
+                <div><a class="pop_subitem seepop" href="PopController"> To see all articles' popularity</a></div>
                 <c:forEach items="${subject.rows}" var="s_row">
                     <%--<sql:query var="article" dataSource="${ db}">--%>
                     <%--select * from article a , subject s where a.sid=s.sid  and subject="${s_row.subject}" and hide="No";--%>

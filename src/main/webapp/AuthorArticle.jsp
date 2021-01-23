@@ -149,7 +149,7 @@ select * from article a , subject s where a.sid=s.sid  and author = '${ author}'
 <th>Subject</th>
 <th>Title</th>
 <th>Time</th>
-<th>Popularity</th>
+<th>VisitNum</th>
 <th>DownLoad</th>
 </tr>
 <c:forEach items="${result.rows}" var="row">

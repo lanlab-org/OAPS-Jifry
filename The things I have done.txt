@@ -13,5 +13,7 @@ The things I have done (What I still remember):
 11、Add  Verification Code according to the ideas provided by other groups.
 12、Change Title uniqueness to Article ID uniqueness.
 13、Count the likes and sort them   according to Chen zishuo's team.
+14、Calculate articles' CommentNum,DislikesNum,VisitNum,DayDistance,Popularity and show all.
+15、Change showing the two article with most likes to showing the two article with most popularity in index.jsp.
 
 

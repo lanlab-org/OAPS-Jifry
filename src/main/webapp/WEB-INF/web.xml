@@ -32,6 +32,14 @@
     <url-pattern>/AuthorController</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>PopController</servlet-name>
+    <servlet-class>com.controller.PopController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PopController</servlet-name>
+    <url-pattern>/PopController</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AdministratorController</servlet-name>
     <servlet-class>com.controller.AdministorController</servlet-class>
   </servlet>

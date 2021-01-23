@@ -1,11 +1,12 @@
 package com.service;
 
-import com.javaBean.Administrator;
-import com.javaBean.Article;
-import com.javaBean.Author;
-import com.javaBean.Subject;
+import com.javaBean.*;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DB {
 
@@ -393,11 +394,8 @@ public void addVisit(String id,String ip,String title) throws SQLException
 
 	//	public boolean check_popular(String ip, String title, int a) throws SQLException
 //	{
-	public void check_popular(String ip1, int aid, int a,String title1) throws SQLException
+	public void check_popular(String ip, int aid, int a,String title) throws SQLException
 	{
-
-	    String ip="\""+ip1+"\"";
-	    String title="\""+title1+"\"";
 		connect();
 		int i = 0;
 		String sql = "insert into love_article(ip, aid, prefer,title) values(?, ?, ?,?)";
@@ -415,7 +413,6 @@ public void addVisit(String id,String ip,String title) throws SQLException
 			i = 1;
 
 		}
-        System.out.println("i:"+i);
 		if(i==1)
 		{
 			PreparedStatement ps3 = con.prepareStatement(sql3);
@@ -423,7 +420,6 @@ public void addVisit(String id,String ip,String title) throws SQLException
 			ps3.setString(2, ip);
 			ps3.setInt(3, aid);
 			ps3.executeUpdate();
-//			result = false;
 		}
 
 		else if(i==0)
@@ -434,7 +430,6 @@ public void addVisit(String id,String ip,String title) throws SQLException
 			ps.setInt(3, a);
 			ps.setString(4,title);
 			ps.executeUpdate();
-//			result = true;
 		}
 
 
@@ -502,6 +497,100 @@ public void addVisit(String id,String ip,String title) throws SQLException
 
 //		return result;
 	}
+	public Map<Integer,String> selectAIDTitle() throws SQLException {
+        Map<Integer,String> map=new HashMap<Integer,String>();
+		connect();
+		String sql="select aid,title from article where hide='No'";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet res = ps.executeQuery();
+        while (res.next()){
+            map.put(res.getInt("aid"),res.getString("title"));
+        }
+        close();
+        return  map;
+	}
+	public Popularity getPopularity(Integer aid,String title) throws SQLException {
+        Integer commentNum=0;
+        Integer likesNum=0;
+        Integer dislikeNum=0;
+        Integer visitNum=0;
+        Double dayDis=0.0;
+        Timestamp time=new Timestamp(0);
+        Double popularity=0.0;
+        connect();
+        String sql;
+        PreparedStatement ps;
+        ResultSet res;
+        sql="select count(*) from comments where aid=?";
+        ps = con.prepareStatement(sql);
+        ps.setInt(1,aid);
+        res = ps.executeQuery();
+
+        if (res.next()){
+            commentNum=res.getInt(1);
+
+        }
+        sql="select count(*) from love_article where aid=? and prefer=?";
+        ps = con.prepareStatement(sql);
+        ps.setInt(1,aid);
+        ps.setInt(2,1);
+        res = ps.executeQuery();
+        if (res.next()){
+            likesNum=res.getInt(1);
+
+        }
+        sql="select count(*) from love_article where aid=? and prefer=?";
+        ps = con.prepareStatement(sql);
+        ps.setInt(1,aid);
+        ps.setInt(2,0);
+        res = ps.executeQuery();
+        if (res.next()){
+            dislikeNum=res.getInt(1);
+
+        }
+        sql="select count(*) from visit where aid=?";
+        ps = con.prepareStatement(sql);
+        ps.setInt(1,aid);
+        res = ps.executeQuery();
+        if (res.next()){
+            visitNum=res.getInt(1);
+
+        }
+        sql="select time from article where aid=?";
+        ps = con.prepareStatement(sql);
+        ps.setInt(1,aid);
+        res = ps.executeQuery();
+        if (res.next()){
+            time=res.getTimestamp("time");
+
+        }
+        dayDis=(System.currentTimeMillis()-time.getTime())/(1000*3600*24.0)*(-1);
+        popularity=(4*commentNum+3*likesNum+2*dislikeNum+visitNum)*Math.exp(dayDis/100.0);
+        Popularity pop=new Popularity();
+        pop.setCommentNum(commentNum);
+        pop.setDayDis(dayDis);
+        pop.setIntDayDis(dayDis.intValue()*(-1));
+        pop.setLikesNum(likesNum);
+        pop.setDislikeNum(dislikeNum);
+        pop.setVisitNum(visitNum);
+        pop.setAid(aid);
+        pop.setTitle(title);
+        pop.setPopularity(popularity);
+        pop.setIntPop(popularity.intValue());
+
+        close();
+        return pop;
+
+
+
+
+
+
+
+
+
+
+    }
 
 
 }
