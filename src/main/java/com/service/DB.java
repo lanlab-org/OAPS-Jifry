@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class DB {
 
-	public String root = "wzf";
+	public String wzf = "wzf";
 	public String url = "jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
 	public String password = "wzf";
 	public String Driver = "com.mysql.jdbc.Driver";
@@ -21,7 +21,7 @@ public class DB {
 		{
 			Class.forName(Driver);
 
-			con = DriverManager.getConnection(url, root, password);
+			con = DriverManager.getConnection(url, wzf, password);
 
 		}
 

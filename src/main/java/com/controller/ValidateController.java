@@ -17,7 +17,7 @@ public class ValidateController extends HttpServlet {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
         //180高，40宽，5个数字，50干扰线
-        ValidateCode verifyCode = new ValidateCode(100,30,4,50);
+        ValidateCode verifyCode = new ValidateCode(100,30,4,10);
         verifyCode.write(response.getOutputStream());
 
         System.out.println("验证码为："+verifyCode.getCode());

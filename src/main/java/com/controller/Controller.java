@@ -302,8 +302,11 @@ public class Controller extends HttpServlet {
 		if(page.equals("subject"))
 		{
 			String subject = request.getParameter("id");
-			
+			String psid = request.getParameter("psid");
+
+
 			request.setAttribute("subject", subject);
+			request.setAttribute("psid", psid);
 
 			request.getRequestDispatcher("NewFile.jsp").forward(request, response);
 //			response.sendRedirect("NewFile.jsp");
@@ -312,6 +315,7 @@ public class Controller extends HttpServlet {
 		if(page.equals("post-article"))
 		{
 			String subject = request.getParameter("subject");
+			String psid = request.getParameter("psid");
 			String email = request.getParameter("email");
 			String authorName = request.getParameter("authorName");
 
@@ -334,6 +338,7 @@ public class Controller extends HttpServlet {
 				//JOptionPane.showMessageDialog(null, "Sorry you have been blcoked, please contact Author", "Info", JOptionPane.INFORMATION_MESSAGE);
 				
 				request.setAttribute("subject", subject);
+				request.setAttribute("psid", psid);
 				request.getRequestDispatcher("NewFile.jsp").forward(request, response);
 			}
 			
@@ -341,6 +346,7 @@ public class Controller extends HttpServlet {
 			{
 				request.setAttribute("subject", subject);
 				request.setAttribute("email", email);
+				request.setAttribute("psid", psid);
 				request.setAttribute("authorName", authorName);
 				request.getRequestDispatcher("PostArticle.jsp").forward(request, response);
 			}	
@@ -401,7 +407,7 @@ public class Controller extends HttpServlet {
 
 
 					try {
-						String root = "wzf";
+						String wzf = "wzf";
 						String password = "wzf";
 						String url = "jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
 						String driver = "com.mysql.jdbc.Driver";
@@ -411,7 +417,7 @@ public class Controller extends HttpServlet {
 
 						String sql = "insert into comments (title, aid, comment, time) values (?,?,?,?)";
 
-						con = DriverManager.getConnection(url, root, password);
+						con = DriverManager.getConnection(url, wzf, password);
 
 						PreparedStatement ps = con.prepareStatement(sql);
 
