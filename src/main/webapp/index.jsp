@@ -116,7 +116,7 @@
     </style>
 </head>
 <body>
-
+<div>
 <header>
     <nav>
         <a href="Controller?page=home">Home</a>
@@ -132,7 +132,7 @@
         </form>
     </nav>
 </header>
-
+</div>
 <sql:setDataSource user="wzf" password="wzf"
                    url="jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8"
                    driver="com.mysql.jdbc.Driver" var="db"/>
