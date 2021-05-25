@@ -119,6 +119,7 @@
 
 <header>
     <nav>
+             <div>
         <a href="Controller?page=home">Home</a>
         <a href="Controller?page=aboutus">About us</a>
         <a href="Controller?page=contact">Contact</a>
@@ -130,6 +131,7 @@
             <input type="text" name="search2">
             <button>search</button>
         </form>
+             </div>
     </nav>
 </header>
 
