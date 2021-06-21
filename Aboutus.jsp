@@ -124,7 +124,7 @@ footer
 </form>
 <form action="Controller" method="post">
 <input type="hidden" name="page" value="dropIp">
-<button>dropIp</button>
+<button>DROP MY IP</button>
 </form>
 </nav>
 </header>

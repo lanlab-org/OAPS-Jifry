@@ -22,7 +22,7 @@ public class DB {
 		{
 			Class.forName(Driver);
 
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8", wzf, password);
+			con = DriverManager.getConnection(url, wzf, password);
 
 		}
 

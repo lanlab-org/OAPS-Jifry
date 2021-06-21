@@ -253,7 +253,7 @@ public class Controller extends HttpServlet {
 		}
 		if(page.equals("dropIp")){
 			String ip = Get_real_ip.getRemortIP(request);
-			System.out.println(ip);
+			System.out.println("ip为 " + ip +" 的用户选择了自爆");
 			try {
 				new DB().deleteIp(ip);
 			} catch (SQLException throwables) {
