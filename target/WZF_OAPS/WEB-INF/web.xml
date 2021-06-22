@@ -1,6 +1,4 @@
-<!DOCTYPE web-app PUBLIC
-        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
@@ -17,7 +15,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>Controller</servlet-name>
-    <servlet-class>com.javaBeans.Controller</servlet-class>
+    <servlet-class>com.controller.Controller</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
@@ -25,15 +23,23 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>AuthorController</servlet-name>
-    <servlet-class>com.javaBeans.AuthorController</servlet-class>
+    <servlet-class>com.controller.AuthorController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AuthorController</servlet-name>
     <url-pattern>/AuthorController</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>PopController</servlet-name>
+    <servlet-class>com.controller.PopController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PopController</servlet-name>
+    <url-pattern>/PopController</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AdministratorController</servlet-name>
-    <servlet-class>com.javaBeans.AdministorController</servlet-class>
+    <servlet-class>com.controller.AdministorController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdministratorController</servlet-name>
@@ -41,7 +47,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>UploadServlet</servlet-name>
-    <servlet-class>com.javaBeans.UploadServlet</servlet-class>
+    <servlet-class>com.controller.UploadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UploadServlet</servlet-name>
@@ -49,11 +55,19 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>DownloadServlet</servlet-name>
-    <servlet-class>com.javaBeans.DownloadServlet</servlet-class>
+    <servlet-class>com.controller.DownloadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DownloadServlet</servlet-name>
     <url-pattern>/DownloadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ValidateController</servlet-name>
+    <servlet-class>com.controller.ValidateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateController</servlet-name>
+    <url-pattern>/ValidateController</url-pattern>
   </servlet-mapping>
   <!-- 解决中文乱码 -->
   <filter>

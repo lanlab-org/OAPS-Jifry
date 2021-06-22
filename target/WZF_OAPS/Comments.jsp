@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-    
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@ body
 
 header
 {
-	background-color:black;
+	background-color:dodgerblue;
 	text-align:center;
 	height:70px;
 	margin-bottom:50px;
@@ -106,7 +106,7 @@ div
 
 footer
 {
-	background:black;
+	background:dodgerblue;
 	height:40px;
 	color:white;
 	text-align:center;
@@ -138,13 +138,13 @@ footer
 
 <form action="Controller" method="post">
 <input type="hidden" name="page" value="search">
-<input type="text" name="search2" required>
+<input type="text" name="search2">
 <button>search</button>
 </form>
 </nav>
 </header>
 
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="root" password="root" url="jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.cj.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
 select * from comments
@@ -160,10 +160,10 @@ select * from comments
 </tr>
 <c:forEach items="${result.rows}" var="row">
 <tr>
-<td><a href="Controller?page=view-article&title=${ row.title}"> <c:out value="${ row.title}"></c:out> </a></td>
+<td><a href="Controller?page=view-article&title=${ row.title}&id=${row.aid}"> <c:out value="${ row.title}"></c:out> </a></td>
 <td><c:set var = "string" value = "${ fn:length(row.user)}"/><c:out value="${ fn:substring(row.user, 0, 3)}***${ fn:substring(row.user, string-8, string)}"></c:out></td>
 <td><c:out value="${ row.comment}"></c:out></td>
-<td><c:out value="${ row.time}"></c:out></td>
+<td><fmt:formatDate value="${row.time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 </tr>
 </c:forEach>
 </table>

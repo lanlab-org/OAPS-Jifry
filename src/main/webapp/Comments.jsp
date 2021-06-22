@@ -144,7 +144,7 @@ footer
 </nav>
 </header>
 
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="root" password="root" url="jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.cj.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
 select * from comments

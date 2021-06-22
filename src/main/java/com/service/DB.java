@@ -10,10 +10,10 @@ import java.util.Map;
 
 public class DB {
 
-	public String wzf = "wzf";
-	public String url = "jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
-	public String password = "wzf";
-	public String Driver = "com.mysql.jdbc.Driver";
+	public String root = "root";
+	public String url = "jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
+	public String password = "root";
+	public String Driver = "com.mysql.cj.jdbc.Driver";
 	public Connection con;
 
 	public void connect() throws SQLException
@@ -22,7 +22,7 @@ public class DB {
 		{
 			Class.forName(Driver);
 
-			con = DriverManager.getConnection(url, wzf, password);
+			con = DriverManager.getConnection(url, root, password);
 
 		}
 
@@ -411,9 +411,11 @@ public void addVisit(String id,String ip,String title) throws SQLException
 		if (rs.next())
 		{
 			i = 1;
+			int prefer = rs.getInt(3);
+			if(prefer == a)a = -1;
 
 		}
-		if(i==1)
+		if(i == 1)
 		{
 			PreparedStatement ps3 = con.prepareStatement(sql3);
 			ps3.setInt(1, a);
@@ -454,9 +456,6 @@ public void addVisit(String id,String ip,String title) throws SQLException
 
 //		boolean result = false;
 		int i = 0;
-
-
-
 		String sql = "insert into love_comment(ip, cid, prefer) values(?, ?, ?)";
 		String sql2 = "select * from love_comment where ip=? and cid=?";
 		String sql3 = "update love_comment set prefer=? where ip=? and cid=?";
@@ -470,32 +469,28 @@ public void addVisit(String id,String ip,String title) throws SQLException
 		if(rs.next())
 		{
 			i = 1;
+			int prefer = rs.getInt(3);
+			if(prefer == a)a = -1;
 		}
 
-		if(i==1)
+		if(i == 1)
 		{
 			PreparedStatement ps3 = con.prepareStatement(sql3);
 			ps3.setInt(1, a);
 			ps3.setString(2, ip);
 			ps3.setInt(3, id);
 			ps3.executeUpdate();
-//			result = false;
 		}
 
-		else if(i==0)
+		else if(i == 0)
 		{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, ip);
 			ps.setInt(2, id);
 			ps.setInt(3, a);
 			ps.executeUpdate();
-//			result = true;
 		}
-
-
 		close();
-
-//		return result;
 	}
 	public Map<Integer,String> selectAIDTitle() throws SQLException {
         Map<Integer,String> map=new HashMap<Integer,String>();

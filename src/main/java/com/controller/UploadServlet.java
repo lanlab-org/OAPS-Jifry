@@ -138,11 +138,11 @@ public class UploadServlet extends HttpServlet {
                             Files.copy(is, Paths.get(uploadPath + File.separator + fileName), StandardCopyOption.REPLACE_EXISTING);
 
                             try {
-                                Class.forName("com.mysql.jdbc.Driver");
+                                Class.forName("com.mysql.cj.jdbc.Driver");
 
-                                String u = "wzf";
-                                String password = "wzf";
-                                String ul = "jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
+                                String u = "root";
+                                String password = "root";
+                                String ul = "jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
 
                                 con = DriverManager.getConnection(ul, u, password);
                                 String sql0 = "select sid from subject where subject=?";

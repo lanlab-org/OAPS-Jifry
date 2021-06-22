@@ -46,7 +46,7 @@
 
 		footer
 		{
-			background:black;
+			background:dodgerblue;
 			height:40px;
 			color:white;
 			text-align:center;
@@ -71,9 +71,9 @@
 
 
 
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="root" password="root" url="jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.cj.jdbc.Driver" var="db"/>
 <sql:query var="result" dataSource="${ db}">
-	select * from article a , subject s where a.sid=s.sid  and title='<%= request.getAttribute("title")%>'
+	select * from article a , subject s where a.sid=s.sid  and title='<%= request.getAttribute("title")%>' and aid=<%= request.getAttribute("aid")%>
 </sql:query>
 
 <c:forEach items="${ result.rows}" var="row">
@@ -81,7 +81,7 @@
 	<h3 style="text-align: center;">${info}</h3>
 	<form class="form1" action="AuthorController" method="post">
 		<input type="hidden" name="page" value="edit-form">
-		<input type="hidden" name="old-title" value="<%= request.getAttribute("title")%>">
+		<input type="hidden" name="old-title" value="${row.title}">
 		<table>
 
 			<tr>
@@ -119,6 +119,9 @@
 
 			<tr>
 				<td><button>update</button></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="aid" value="${row.aid}"  hidden></td>
 			</tr>
 
 		</table>

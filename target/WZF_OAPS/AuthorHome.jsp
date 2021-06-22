@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +59,7 @@ div
 
 footer
 {
-	background:black;
+	background:dodgerblue;
 	height:40px;
 	color:white;
 	text-align:center;
@@ -73,7 +73,7 @@ footer
 </style>
 </head>
 <body>
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="root" password="root" url="jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8" driver="com.mysql.cj.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
     select * from article a , subject s where a.sid=s.sid
@@ -103,13 +103,19 @@ footer
 <c:forEach items="${result.rows}" var="row">
 <tr>
 <td><c:out value="${ row.subject}"></c:out></td>
-<td><c:out value="${ row.title}"></c:out></td>
-<td><c:out value="${ row.highlight}"></c:out></td>
+<td><a  href="Controller?page=view-article&title=${ row.title}&id=${row.aid}"><c:out value="${row.title}"></c:out></a></td>
+    <c:set var="highlight" value="${row.highlight}"></c:set>
+    <c:set var="spots" value=""></c:set>
+    <c:if test="${fn:length(highlight)>20}" >
+        <c:set var="highlight" value="${fn:substring(highlight,0,10)}"></c:set>
+        <c:set var="spots" value="......"></c:set>
+    </c:if>
+<td><c:out value="${highlight}"></c:out><c:out value="${ spots}"></c:out></td>
     <td><c:out value="${ row.hide}"></c:out></td>
-<td><a href="AuthorController?page=edit&title=${ row.title}">edit</a> ||
-    <a href="AuthorController?page=delete&title=${ row.title}">delete</a>||
-    <a href="AuthorController?page=show&title=${ row.title}">show</a>||
-    <a href="AuthorController?page=hide&title=${ row.title}">hide</a>
+<td><a href="AuthorController?page=edit&aid=${ row.aid}&title=${row.title}">edit</a> ||
+    <a href="AuthorController?page=delete&aid=${ row.aid}&title=${row.title}">delete</a>||
+    <a href="AuthorController?page=show&aid=${ row.aid}&title=${row.title}">show</a>||
+    <a href="AuthorController?page=hide&aid=${ row.aid}&title=${row.title}">hide</a>
 </td>
 </tr>
 </c:forEach>

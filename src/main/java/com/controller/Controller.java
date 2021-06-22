@@ -60,16 +60,16 @@ public class Controller extends HttpServlet {
 			String ip = Get_real_ip.getRemortIP(request);
 			String title = request.getParameter("title");
 			String id = request.getParameter("aid");
-            int aid=-1;
+            int aid = 0;
             aid=Integer.parseInt(id);
 			int a = -1;
 			if(page.equals("like"))
 			{
-				a=1;
+				a = 1;
 			}
 			else if(page.equals("dislike"))
 			{
-				a=0;
+				a = 0;
 			}
 			DB db = new DB();
 			boolean status = false;
@@ -106,7 +106,7 @@ public class Controller extends HttpServlet {
 			}
 			else if(page.equals("comments_dislike"))
 			{
-				a=0;
+				a = 0;
 			}
 
 			
@@ -360,17 +360,17 @@ public class Controller extends HttpServlet {
 
 
 					try {
-						String wzf = "wzf";
-						String password = "wzf";
-						String url = "jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
-						String driver = "com.mysql.jdbc.Driver";
+						String root = "root";
+						String password = "root";
+						String url = "jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
+						String driver = "com.mysql.cj.jdbc.Driver";
 						Connection con;
 
 						Class.forName(driver);
 
 						String sql = "insert into comments (title, aid, comment, time) values (?,?,?,?)";
 
-						con = DriverManager.getConnection(url, wzf, password);
+						con = DriverManager.getConnection(url, root, password);
 
 						PreparedStatement ps = con.prepareStatement(sql);
 

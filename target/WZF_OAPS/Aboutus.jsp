@@ -16,7 +16,7 @@ body
 
 header
 {
-	background-color:black;
+	background-color:dodgerblue;
 	text-align:center;
 	height:70px;
 	margin-bottom:50px;
@@ -94,7 +94,7 @@ div {
 
 footer
 {
-	background:black;
+	background:dodgerblue;
 	height:40px;
 	color:white;
 	text-align:center;
@@ -115,17 +115,11 @@ footer
 <a href="Controller?page=contact">Contact</a>
 <a href="Controller?page=administrator">Admin</a>
 
-<form action="Controller" method="post">
-<input type="hidden" name="page" value="select">
-<select name="option">
-<option value="Articles">Articles</option>
-</select>
-<button>go</button>
-</form>
+
 
 <form action="Controller" method="post">
 <input type="hidden" name="page" value="search">
-<input type="text" name="search2" required>
+<input type="text" name="search2">
 <button>search</button>
 </form>
 </nav>

@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +59,7 @@
 
         footer
         {
-            background:black;
+            background:dodgerblue;
             height:40px;
             color:white;
             text-align:center;
@@ -73,7 +73,7 @@
     </style>
 </head>
 <body>
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://47.115.56.157:3306/oo?serverTimezone=GMT%2B8" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="root" password="root" url="jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8" driver="com.mysql.cj.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
     select * from subject order by parentsid
@@ -108,7 +108,7 @@
                 <td><c:out value="${ row.sid}"></c:out></td>
                 <td><c:out value="${ row.subject}"></c:out></td>
                 <td><c:out value="${ row.parentsid}"></c:out></td>
-                <td><c:out value="${ row.sdate}"></c:out></td>
+                <td><fmt:formatDate value="${ row.sdate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 
                 <td><a href="AdministratorController?page=edit&subject=${ row.subject}">edit</a> ||
                     <a href="AdministratorController?page=delete&sid=${ row.sid}">delete</a>

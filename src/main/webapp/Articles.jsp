@@ -136,7 +136,7 @@ footer
 </nav>
 </header>
 
-<sql:setDataSource user="wzf" password="wzf" url="jdbc:mysql://121.4.94.30:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.jdbc.Driver" var="db"/>
+<sql:setDataSource user="root" password="root" url="jdbc:mysql://127.0.0.1:3306/oo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8" driver="com.mysql.cj.jdbc.Driver" var="db"/>
 
 <sql:query var="result" dataSource="${ db}">
 select * from article a , subject s where a.sid=s.sid  and hide="No"
@@ -155,15 +155,7 @@ select * from article a , subject s where a.sid=s.sid  and hide="No"
 <td><a href="Controller?page=view-article&title=${ row.title}&id=${row.aid}"> <c:out value="${ row.title}"></c:out> </a></td>
 <td><c:set var = "string" value = "${ fn:length(row.author)}"/><c:out value="${ fn:substring(row.author, 0, 3)}***${ fn:substring(row.author, string-8, string)}"></c:out></td>
 <td><fmt:formatDate value="${row.time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-    <sql:query var="result6" dataSource="${ db}">
-        select * from visit where aid="${ row.aid}";
-    </sql:query>
 
-    <c:set var="q" value="0"></c:set>
-    <c:forEach items="${ result6.rows}" var="row1">
-
-        <c:set var="q" value="${ q+1}"></c:set>
-    </c:forEach>
 <td><c:out value="${q}"></c:out></td>
 </tr>
 </c:forEach>
